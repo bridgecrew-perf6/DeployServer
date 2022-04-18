@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="LoginRegisterForm/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="LoginRegisterForm/css/style.css">
+</head>
+<body>
+
+    <div class="main" style="background-color: #F7F8F9">
+
+        <div class="container">
+            <div class="booking-content">
+                
+                <div class="booking-image booking-img" alt="Booking Image" style="background-image: url(https://source.unsplash.com/1600x900/?coffee); height: 725px;"></div>
+                <div class="booking-form">
+                    <form id="booking-form" action="#" th:action="@{/addAccount}" th:object="${account}" method="post">
+                        <a class="navbar-brand" href="/home"> <img
+					src="images/logo1.png" alt="Logo" class="tm-site-logo" />
+						</a>
+                        <h1>Register</h1>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{username}" id="name" value="" required/>
+                            <label for="name" class="form-label">Username</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password" th:field="*{password}" id="password" value="" required />
+                            <label for="password" class="form-label">Password</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{email}" id="email" value="" required />
+                            <label for="email" class="form-label">Email</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{fullname}" id="fullname" value="" required />
+                            <label for="email" class="form-label">Full Name</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{phone}" id="phone" value="" required />
+                            <label for="email" class="form-label">Phone</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{gender}" id="email" value="" required />
+                            <label for="email" class="form-label">Gender</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{address}" id="phone" value="" required />
+                            <label for="email" class="form-label">Address</label>
+                        </div>
+                        <div>
+                            <p style="color: #DD4B39; font-family: Arial sans-serif">Username đã có người sử dụng</p>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" style="background-color: #26C3FF" value="Register" class="submit" id="submit" name="submit" />
+                            <a id="linkregister" href="/login">Login Here!</a>
+                        </div>
+                        </div>                        
+                    </form>                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="LoginRegisterForm/vendor/jquery/jquery.min.js"></script>
+    <script src="LoginRegisterForm/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

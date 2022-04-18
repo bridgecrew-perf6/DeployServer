@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đăng ký</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="LoginRegisterForm/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="LoginRegisterForm/css/style.css">
+</head>
+<body>
+
+    <div class="main" style="background-color: #F7F8F9">
+
+        <div class="container">
+            
+            <div class="booking-content">
+                
+                <div class="booking-image booking-img" alt="Booking Image" style="background-image: url(https://source.unsplash.com/1600x900/?coffee); height: 725px;"></div>
+                <div class="booking-form">
+                    <form id="booking-form" action="#" th:action="@{/addAccount}" th:object="${account}" method="post">
+                        <a class="navbar-brand" href="/home"> <img
+					src="images/logo1.png" alt="Logo" class="tm-site-logo" />
+						</a>
+                        <h1>Đăng ký</h1>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{username}" id="name" value="" required/>
+                            <label for="name" class="form-label">Tên đăng nhập</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password" th:field="*{password}" id="password" value="" required />
+                            <label for="password" class="form-label">Mật khẩu</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password"   value="" required />
+                            <label for="password" class="form-label">Nhập lại mật khẩu</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{email}" id="email" value="" required />
+                            <label for="email" class="form-label">Email</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{fullname}"  value="" required />
+                            <label for="email" class="form-label">Họ và tên</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{phone}"  value="" required />
+                            <label for="email" class="form-label">Số điện thoại</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{gender}"  value="" required />
+                            <label for="email" class="form-label">Giới tính</label>
+
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="text" th:field="*{address}"  value="" required />
+                            <label for="email" class="form-label">Địa chỉ</label>
+                        </div>                        
+                        <div class="form-submit">
+                            <input type="submit" style="background-color: #26C3FF" value="Đăng ký" class="submit" id="submit" name="submit" />
+                            <a id="linkregister" href="/login">Đăng nhập!</a>
+                        </div>
+                        </div>                        
+                    </form>                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="LoginRegisterForm/vendor/jquery/jquery.min.js"></script>
+    <script src="LoginRegisterForm/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

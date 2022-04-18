@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Giỏ hàng</title>
+</head>
+<body>
+<header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                <img th:src="@{/images/logo1.png}" alt="Logo" class="tm-site-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-3">
+                <form class="search-san-pham" action="#" th:action="@{/searchByStaff}" method="GET">
+                    <div class="row">
+                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" ><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/staff/menu">Cửa hàng</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="/cart"
+                        >Giỏ hàng</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
+                           data-toggle="dropdown">Quản lý</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" th:href="@{'/billStaff/' + ${account.username}}">Hóa đơn</a>
+                            <a class="dropdown-item" href="/staff/category">Loại sản phẩm</a>
+                            <a class="dropdown-item" href="/staff/product"> Sản phẩm</a>
+                            <a class="dropdown-item" href="/staff/supplier">Nhà cung cấp</a>
+                            <a class="dropdown-item" href="/staff/news">Bài viết</a>
+                        </div>
+                    </li>
+                    <div class="dropdown col-3">
+                        <button class="btn login_btn" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i>Xin chào nhân viên<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" style="margin-left: 15px">
+                            <li><a href="/profile"><i class="fas fa-user"></i>
+                                Hồ sơ</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main style="padding-top: 150px">
+    <div class="container">
+        <form id="abc" th:action="@{/cart/addOrder}" method="post">
+
+            <!--Section: Block Content-->
+            <section class="mt-5 mb-4">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-lg-8">
+
+                        <!-- Card -->
+                        <div class="card wish-list mb-4">
+                            <div class="card-body">
+                                <h5 class="mb-4">Giỏ hàng (<span th:text="${cartCount}">2</span> sản phẩm)</h5>
+
+                                <div class="row mb-4" th:each="item, iStat : ${cart}">
+                                    <input type="hidden" th:value="${item.quantity}" th:id="'instock' + ${item.id}">
+                                    <div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <img style="height: 150px; width:120px" th:attr="src=@{${item.image}}"
+                                                 src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <span th:text="${item.productName}"></span>
+                                                    <span>Còn lại: </span><span th:text="${item.quantity}"></span>
+                                                </div>
+                                                <div>
+                                                    <nav>
+                                                        <ul class="pagination">
+                                                            <li class="page-item">
+                                                                <a onclick="minusHandler(this)"
+                                                                   th:data-id="${item.id}"
+                                                                   th:data-price="${item.price}"
+                                                                   class="page-link minusButton"
+                                                                   th:id="${item.id}"><b>-</b></a>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <input name="quantity" type="text" th:value="1" class="form-control text-center" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                                                       style="max-width: 40px;min-height: 35px; font-size: 16px; padding-bottom: 5px" onkeydown="return false" th:id="'quantity' + ${item.id}"/>
+                                                            </li>
+                                                            <li class="page-item">
+                                                                <a onclick="plusHandler(this)"
+                                                                   th:data-id="${item.id}"
+                                                                   th:data-price="${item.price}"
+                                                                   class="page-link plusButton"
+                                                                   th:id="${item.id}"><b>+</b></a>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5 d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <a th:onclick="removeFromCart([[${iStat.index}+ '|' + ${item.id}]])" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                                                            class="fas fa-trash-alt mr-1"></i>Bỏ sản phẩm </a>
+
+                                                </div>
+                                                <p class="mb-0"><span><strong><span th:class="total-money" th:id="'total-' + ${item.id}" th:text="${item.price}"></span></strong>VND</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <span><strong>Thông tin khách hàng</strong></span>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <p>SĐT Khách hàng:</p>
+                                        <p><input id="customerPhone"  class="form-control" type="text"></p>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <span>Tên khách hàng: <span id="customerName"></span></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <span>Điểm hiện có: <span id="customerPoint"></span></span>
+                                        <input type="hidden" id="pointMax" value="0">
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <span>Đổi điểm: </span>
+                                        <input type="number" value="0" id="point" class="form-control input-number" min="0">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+
+                                <h5 class="mb-3"><strong>Hóa đơn</strong></h5>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        Tiền hàng
+                                        <span><span id="subtotal-money" th:text="${total}"></span>VND</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Giảm giá
+                                        <span>-</span><span id="discount"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <div>
+                                            <strong>Tạm tính</strong>
+                                            <strong>
+                                                <p class="mb-0">(including VAT)</p>
+                                            </strong>
+                                        </div>
+                                        <span><strong><span id="total-money" th:text="${total}"></span></strong>VND</span>
+                                    </li>
+                                </ul>
+                                <a type="submit" th:onclick="onSubmitCart()" class="btn btn-success btn-block waves-effect waves-light" style="color: white">Thanh toán</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!--Section: Block Content-->
+        </form>
+    </div>
+</main>
+<!--Main layout-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script th:src="@{/js/cart_control.js}"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="shortcut icon" href="images/favicon.icon" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/all.js"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/brands.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/solid.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+    <title>Quản lý sản phẩm</title>
+</head>
+
+<body>
+<header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                <img th:src="@{/images/logo1.png}" alt="Logo" class="tm-site-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-3">
+                <form class="search-san-pham" action="#" th:action="@{/searchByStaff}" method="GET">
+                    <div class="row">
+                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" ><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/staff/menu">Cửa hàng</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/cart"
+                        >Giỏ hàng</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
+                           data-toggle="dropdown">Quản lý</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" th:href="@{'/billStaff/' + ${account.username}}">Hóa đơn</a>
+                            <a class="dropdown-item" href="/staff/category">Loại sản phẩm</a>
+                            <a class="dropdown-item" href="/staff/product"> Sản phẩm</a>
+                            <a class="dropdown-item" href="/staff/supplier">Nhà cung cấp</a>
+                            <a class="dropdown-item" href="/staff/news">Bài viết</a>
+                        </div>
+                    </li>
+                    <div class="dropdown col-3">
+                        <button class="btn login_btn" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i>Xin chào nhân viên<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" style="margin-left: 15px">
+                            <li ><a href="/profile"><i class="fas fa-user"></i>
+                                Hồ sơ</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid" style="padding-top: 150px;">
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-header text-center">
+                <h1>Thêm mới sản phẩm</h1>
+            </div>
+            <form class="row g-3 ml-2" action="#" th:action="@{/saveProductByStaff}" th:object="${product}" method="post">
+                <div class="col-12">
+                    <input type="hidden" th:field="*{id}" class="form-control" placeholder="Ex: Tra Sua">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Tên sản phẩm</label>
+                    <input type="text" th:field="*{productName}" class="form-control" placeholder="Hãy nhập tên sản phẩm">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Giá</label>
+                    <input type="text" th:field="*{price}" class="form-control" placeholder="Ex: 15000">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Số lượng</label>
+                    <input type="text" th:field="*{quantity}" class="form-control" placeholder="EX: 1,2,3,...">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Mã vạch</label>
+                    <input type="text" th:field="*{productCode}" class="form-control" placeholder="Hãy điền mô tả sản phẩm">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Ảnh sản phẩm</label>
+                    <input type="text" th:field="*{image}" class="form-control" placeholder="Link ảnh sản phẩm">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Loại sản phẩm</label>
+                    <select class="form-select" th:field="*{category}">
+                        <div th:each="category:${listCategory}">
+                            <option th:value="${category.id}" th:text="${category.type}"></option>
+                        </div>
+                        <!--                        <option value="1">Drinks</option>-->
+                        <!--                        <option value="2">Foods</option>-->
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Nhà cung cấp</label>
+                    <select class="form-select" th:field="*{supplier}">
+                        <div th:each="supplier:${listSupllier}">
+                            <option th:value="${supplier.id}" th:text="${supplier.name}"></option>
+                        </div>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Thành phần</label>
+                    <input type="text" th:field="*{ingredient}" class="form-control" placeholder="Hãy nhập thành phần sản phẩm">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Hướng dẫn sử dụng</label>
+                    <input type="text" th:field="*{intruction}" class="form-control" placeholder="Hãy nhập hướng dẫn sử dụng">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Cách bảo quản</label>
+                    <input type="text" th:field="*{preservation}" class="form-control" placeholder="Hãy nhập cách bảo quản">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Xuất xứ</label>
+                    <input type="text" th:field="*{origin}" class="form-control" placeholder="Hãy nhập nơi xuất xứ">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Ngày sản xuất</label>
+                    <input type="date" th:field="*{manufactureDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Ngày hết hạn</label>
+                    <input type="date" th:field="*{expirationDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Mô tả sản phẩm</label>
+                    <textarea type="text" th:field="*{description}" class="form-control" placeholder="Mô tả sản phẩm"></textarea>
+                </div>
+                <div class="col-12 mb-3">
+                    <button type="submit" class="btn btn-outline-success">Thêm mới sản phẩm</button>
+                    <a type="submit" href="/admin" class="btn btn-outline-danger">Quay lại trang chủ</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="padding-top: 50px">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <h1>Danh sách sản phẩm</h1>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3 row">
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th style="width: 300px" scope="col">Tên SP</th>
+                                        <th scope="col">Ảnh SP</th>
+                                        <th scope="col">Số lương</th>
+                                        <th scope="col">Giá</th>
+                                        <th scope="col">Loại SP</th>
+                                        <th scope="col">Ngày sản xuất</th>
+                                        <th scope="col">Ngày hết hạn</th>
+                                        <th scope="col">Mã vạch</th>
+                                        <th scope="col">Chức năng</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="product:${listProducts}">
+                                        <th scope="col" th:text="${product.id}"></th>
+                                        <th scope="col" th:text="${product.productName}"></th>
+                                        <th scope="col" ><img style="height: 150px; width:120px" th:attr="src=@{${product.image}}"></th>
+                                        <th scope="col" th:text="${product.quantity}"></th>
+                                        <th scope="col" th:text="${product.price}"></th>
+                                        <th scope="col" th:text="${product.category.type}"></th>
+                                        <th scope="col" th:text="${product.manufactureDate}"></th>
+                                        <th scope="col" th:text="${product.expirationDate}"></th>
+                                        <th scope="col" th:text="${product.productCode}"></th>
+                                        <td><a th:href="@{'/staff/editProduct/' + ${product.id}}">Chỉnh sửa</a>
+                                            <a href="#" th:attr="data-id=${product.id}" onclick="onDelete(this)">Xóa</a>	&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal hide" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-th-keytype="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Bạn có muốn xóa sản phẩm này không?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container bootstrap snippets bootdeys">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6 margintop">
+                                        <a class=" yes btn btn-success" style="margin-left: 40px;"><i class="fa fa-check" style="margin-left: 0px;"></i>Xác nhận</a>
+                                        <button class="btn btn-danger" style="margin-left: 80px;" data-dismiss="modal" aria-label="Close"><i class="fa fa-envelope-o" ></i> Không</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function onDelete(element){
+        var id = $(element).attr('data-id');
+        console.log(element)
+        console.log(id);
+        $("#itemId").val(id);
+        $("#exampleModalCenter").modal('show');
+        $(".yes").prop("href", "/staff/deleteProduct/"+id)
+    }
+</script>
+</body>
+
+</html>

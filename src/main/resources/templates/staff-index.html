@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!-- Basic -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Metas -->
+	<title>Maison Coffee</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Site Icons -->
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet'
+		type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+	<!-- Site CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="css/responsive.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+	<script defer src="fontawesome-free-5.15.3-web/js/all.js"></script>
+	<link href="fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
+	<link href="fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+	<link href="fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+	<script defer src="fontawesome-free-5.15.3-web/js/brands.js"></script>
+	<script defer src="fontawesome-free-5.15.3-web/js/solid.js"></script>
+	<script defer src="fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+</head>
+
+<body>
+	<!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="staff-index.html">
+					<img src="images/logo1.png" alt="Logo" class="tm-site-logo" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+					aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="/about">Cart</a></li>
+						<div class="dropdown ">
+							<button class="btn login_btn" type="button"
+								data-toggle="dropdown">
+								<i class="fas fa-user-tie"></i>Welcome, 
+								<span sec:authentication="name"></span>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="/profile"><i class="fas fa-user"></i>
+										Profile</a></li>
+							<li class="dropdown-divider"></li>
+								<li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+										Logout</a></li>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- End header -->
+
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-center">
+				<img src="images/slide_1.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Maison Coffee</strong></h1>
+							<p class="m-b-40">We want to be a welcoming, comforting presence in every community we
+								server and anywhere else we happen to show up.<br>
+								We know our guests have a choice-and we never want them to feel less than special
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white2"
+									href="/staff/order">Order</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="images/slide_2.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Maison Coffee</strong></h1>
+							<p class="m-b-40">
+								We want to be a welcoming, comforting presence in every community we server and anywhere
+								else we happen to show up.<br>
+								We know our guests have a choice-and we never want them to feel less than special
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white2"
+									href="/staff/order">Order</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="images/slide_3.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Maison Coffee </strong></h1>
+
+							<p class="m-b-40">
+								We want to be a welcoming, comforting presence in every community we server and anywhere
+								else we happen to show up.<br>
+								We know our guests have a choice-and we never want them to feel less than special
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white2"
+									href="/staff/order">Order</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+
+	<!-- End slides -->
+
+	<!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="images/about.jpg" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>Welcome To <span>Maison Coffee</span></h1>
+						<h4>Our Story</h4>
+						<p>The Maison Coffee is open in VietNam ! We are excited to introduce our Maison Coffee. If you
+							crave great coffee, you'll
+							love knowing that we provide a real alternative to chains with handcrafted coffee and
+							espresso drinks, a full tea bar, and
+							real food options.
+						</p>				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-left">
+					<p class="lead ">
+						Our mission is to serve everyone better than anyone else.
+					</p>
+
+
+					<!-- <span class="lead">Michael Strahan</span> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
+	<div class="contact-imfo-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<i class="fa fa-volume-control-phone"></i>
+					<div class="overflow-hidden">
+						<h4>Phone</h4>
+						<p class="lead">
+							0236 3952 332
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-envelope"></i>
+					<div class="overflow-hidden">
+						<h4>Email</h4>
+						<p class="lead">
+							fptcity.support@fpt.com.vn
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-map-marker"></i>
+					<div class="overflow-hidden">
+						<h4>Location</h4>
+						<p class="lead">
+							FPT Complex building, FPT City, Hoa Hai, Ngu Hanh Son Ward, Da Nang, 550000
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer-area bg-f">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<h3>About Us</h3>
+					<p>Our Cafe delivers way beyond the traditional coffee shop favorites (although we think our
+						homemade pastries are pretty good). We have traditional breakfast choices, including eggs,
+						omelettes, pancakes, and plenty of healthy options (including gluten free, vegetarian, and
+						vegan). Be sure to check out our weekend specials, when we go all out to provide you with new
+						options that are delicious and different. Finally, we also serve a wide variety of salads,
+						sandwiches and flatbreads for lunch-lovers.</p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Opening hours</h3>
+					<p><span class="text-color">Monday-Fri: </span>6:Am - 10:Pm</p>
+					<p><span class="text-color">Sat-Sun: </span>7:Am - 4:Pm</p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Contact information</h3>
+					<p class="lead"> FPT Complex building, FPT City, Hoa Hai, Ngu Hanh Son Ward, Da Nang, 550000</p>
+					<p class="lead"><a href="#">0236 3952 332</a></p>
+					<p><a href="#">fptcity.support@fpt.com.vn</a></p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<h3>Subscribe</h3>
+					<div class="subscribe_form">
+						<form class="subscribe_form">
+							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..."
+								type="email">
+							<button type="submit" class="submit">SUBSCRIBE</button>
+							<div class="clearfix"></div>
+						</form>
+					</div>
+					<ul class="list-inline f-social">
+						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"
+									aria-hidden="true"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+
+						<p class="copy_right text-center">
+							Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script> All rights reserved | <a
+								href="#"> Maison Coffee </a> | Design By :
+							<a href="https://www.fpt-software.com/">fsoft's team</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+
+
+
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+	<script src="js/contact-form-script.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+
+</html>

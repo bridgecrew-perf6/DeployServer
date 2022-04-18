@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+		  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+	<!-- Site Icons -->
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet'
+		  type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<!-- Site CSS -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" th:href="@{/css/custom.css}">
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<title>Lịch sử mua hàng</title>
+</head>
+
+<body>
+<header class="top-navbar">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+
+			<a class="navbar-brand" href="/home">
+				<img src="/images/logo1.png" alt="Logo" class="tm-site-logo"/>
+			</a>
+
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="col-3">
+				<form class="search-san-pham" action="#" th:action="@{/search}" method="GET">
+					<div class="row">
+						<input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
+						<button type="submit" ><i class="fa fa-search"></i></button>
+					</div>
+				</form>
+			</div>
+			<div class="collapse navbar-collapse" id="navbars-rs-food">
+				<ul class="col-12 navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/home">Trang chủ</a></li>
+					<li class="nav-item"><a class="nav-link" href="/news">Bài viết</a></li>
+					<li class="nav-item"><a class="nav-link" href="/menu">Sản phẩm</a></li>
+					<li class="nav-item"><a class="nav-link" href="/contact">Liên hệ</a></li>
+				</ul>
+				<div sec:authorize="isAnonymous()">
+					<button class="btn login_btn"
+							style="height: 50px; background-color: #26C3FF;">
+						<a class="text-center" href="/login" style="color: white">Đăng nhập</a>
+					</button>
+				</div>
+				<div sec:authorize="hasRole('ADMIN')">
+					<div class="dropdown ">
+						<button class="btn login_btn" type="button"
+								data-toggle="dropdown">
+							<i class="fas fa-user-tie"></i><span sec:authentication="name"><span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="/admin"><i class="fas fa-user"></i>
+								Quản lý cửa hàng</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a href="/profile"><i class="fas fa-user"></i>
+								Hồ sơ cá nhân</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+								Đăng xuất</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div sec:authorize="hasRole('STAFF')">
+					<!--<span sec:authentication=name></span>
+                    <span th:text ="${#authentication.getPrincipal().getAccount().getRole()}"></span>-->
+					<div class="dropdown ">
+						<button class="btn login_btn" type="button"
+								data-toggle="dropdown">
+							<i class="fas fa-user-tie"></i>
+							<span sec:authentication="name"></span>
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="/staff/menu"><i class="fas fa-user"></i>
+								Nhân viên</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a href="/profile"><i class="fas fa-user"></i>
+								Hồ sơ</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+								Đăng xuất</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div sec:authorize="hasRole('USER')">
+					<div class="dropdown ">
+						<button class="btn login_btn" type="button"
+								data-toggle="dropdown">
+							<i class="fas fa-user-tie"></i>
+							<span sec:authentication="name"></span>
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="/profile"><i class="fas fa-user"></i>
+								Hồ sơ</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a th:href="@{'/historyOrder/' + ${account.username}}"><i class="fas fa-user"></i>
+								Lịch sử mua hàng</a></li>
+							<li class="dropdown-divider"></li>
+							<li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+								Đăng xuất</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+<div class="container-fluid" style="padding-top: 200px">
+	<div class="main-body">
+		<div class="row gutters-sm">
+			<div class="col-md-12">
+				<div class="card mb-3">
+					<div class="card-header">
+						<div class="d-flex flex-column align-items-center text-center">
+							<h1>Lịch sử mua hàng</h1>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="mb-3 row">
+                    <!-- List hóa đơn -->
+                    <div class="card" style="margin-top: 10px; width: 1450px; margin-left: 200px" >
+                        <div class="card-header">
+                            Danh sách hóa đơn
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group" th:each="bill : ${listBills}">     
+                              	<a th:href="@{'/viewBill/' + ${bill.id}}" class="list-group-item list-group-item-action"><p>Số hóa đơn: <span th:text="${bill.id}"></span></p><span>    Ngày: </span><span th:text="${bill.createdDate}"></span><span>   |        Nhân viên: </span><span th:text="${bill.createdBy}"></span><span>   |        Tổng tiền: </span><span th:text="${bill.total}"></span></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- ALL PLUGINS -->
+
+<script th:src="@{/js/jquery.superslides.min.js}"></script>
+<script th:src="@{/js/images-loded.min.js}"></script>
+<script th:src="@{/js/isotope.min.js}"></script>
+<script th:src="@{/js/baguetteBox.min.js}"></script>
+<script th:src="@{/js/form-validator.min.js}"></script>
+<script th:src="@{/js/contact-form-script.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+</html>

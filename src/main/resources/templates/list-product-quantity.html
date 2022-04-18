@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="shortcut icon" href="images/favicon.icon" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/all.js"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/brands.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/solid.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+    <title>Kiểm tra sản phẩm sắp hết hàng</title>
+
+</head>
+
+<body>
+<!-- Start header -->
+<header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                <img th:src="@{/images/logo1.png}" alt="Logo" class="tm-site-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-3">
+                <form class="search-san-pham" action="#" th:action="@{/admin/product/search}" method="GET">
+                    <div class="row">
+                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" ><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/admin/staff"
+                        >Quản lý nhân viên</a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
+                           data-toggle="dropdown">Quản lý</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" href="/bill">Hóa đơn</a>
+                            <a class="dropdown-item" href="/incomeform">Doanh thu</a>
+                            <a class="dropdown-item" href="/admin/category">Loại sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/product">Sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/supplier">Nhà cung cấp</a>
+                            <a class="dropdown-item" href="/admin/feedback">Phản hồi</a>
+                            <a class="dropdown-item" href="/admin/news">Bài viết</a>
+                            <a class="dropdown-item" href="/admin/checkProductExpiry">Kiểm tra thời hạn sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/checkProductQuantity">Kiểm tra sản phẩm sắp hết hàng</a>
+                        </div>
+                    </li>
+                    <div class="dropdown ">
+                        <button class="btn login_btn" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i>Xin chào quản lý<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/profile"><i class="fas fa-user"></i>
+                                Hồ sơ</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End header -->
+
+<!-- Start All Pages -->
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Menu</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Pages -->
+
+<!-- Start Menu -->
+<div class="container-fluid" style="padding-top: 150px">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h1>Danh sách bạn muốn kiểm tra</h1>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3 row">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Tên SP</th>
+                                    <th scope="col">Ảnh SP</th>
+                                    <th scope="col">Số lương</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Loại SP</th>
+                                    <th scope="col">Nhà cung cấp</th>
+                                    <th scope="col">Ngày sản xuất</th>
+                                    <th scope="col">Ngày hết hạn</th>
+                                    <th scope="col">Mã vạch</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="product:${list}">
+                                    <th scope="col" th:text="${product.id}"></th>
+                                    <th scope="col" th:text="${product.productName}"></th>
+                                    <th scope="col" ><img style="height: 150px; width:120px" th:attr="src=@{${product.image}}"></th>
+                                    <th scope="col" th:text="${product.quantity}"></th>
+                                    <th scope="col" th:text="${product.price}"></th>
+                                    <th scope="col" th:text="${product.category.type}"></th>
+                                    <th scope="col" th:text="${product.supplier.name}"></th>
+                                    <th scope="col" th:text="${product.manufactureDate}"></th>
+                                    <th scope="col" th:text="${product.expirationDate}"></th>
+                                    <th scope="col" th:text="${product.productCode}"></th>
+                                    <td><a th:href="@{'/editProduct/' + ${product.id}}">Điều chỉnh</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- End Menu -->
+
+<div class="contact-imfo-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>Số điện thoại liên lạc</h4>
+                    <p class="lead">
+                        0236 3952 332
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        fptcity.support@fpt.com.vn
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>Địa chỉ</h4>
+                    <p class="lead">
+                        FPT University, FPT City, Phường Hòa Hải, Quận Ngũ Hành Sơn, Thành phố Đà Nẵng
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-area bg-f">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <h3>Cửa hàng</h3>
+                <p>Mini-mart đã được mở tại Đà Nẵng! Chúng tôi rất vui khi được giới thiệu với bạn về của hàng của chúng tôi.
+                    Nếu bạn muốn có một trải nghiệm mua sắm thú vị, mini-mart sẽ cung cấp cho bạn đầy đủ những mặt hàng mà bạn
+                    cần như thức ăn, đồ uống, bánh kẹo,...</p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h3>Thời gian mở của</h3>
+                <p><span class="text-color">Thứ 2 - Thứ 6 </span>8:AM - 10:PM</p>
+                <p><span class="text-color">Cuối tuần: </span>8:AM - 12:PM</p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h3>Thông tin liên hệ</h3>
+                <p class="lead">FPT University, FPT City, Phường Hòa Hải, Quận Ngũ Hành Sơn, Thành phố Đà Nẵng</p>
+                <p class="lead"><a href="#">0236 3952 332</a></p>
+                <p><a href="#">fptcity.support@fpt.com.vn</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <p class="copy_right text-center">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | <a
+                            href="#"> Mini-mart </a> | Design By :
+                        <a href="https://www.fpt-software.com/">mini-mart's team</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- End Footer -->
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<!-- ALL JS FILES -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- ALL PLUGINS -->
+<script src="js/jquery.superslides.min.js"></script>
+<script src="js/images-loded.min.js"></script>
+<script src="js/isotope.min.js"></script>
+<script src="js/baguetteBox.min.js"></script>
+<script src="js/form-validator.min.js"></script>
+<script src="js/contact-form-script.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đăng nhập</title>
+
+    <link rel="stylesheet" href="LoginRegisterForm/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="LoginRegisterForm/css/style.css">
+</head>
+<body>
+
+<div class="main" style="background-color: #F7F8F9">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-image booking-img" alt="Booking Image" style="background-image: url(https://source.unsplash.com/1600x900/?coffee)">
+                </div>
+                <div class="booking-form">
+                    <form id="booking-form" action="#" th:action="@{/j_spring_security_check}" method="post">
+                    	<a href="/home"><h3 style="color: white; text-decoration: none;">&ltQuay lại trang chủ</h3></a>
+                    	<a class="navbar-brand" href="/home"> <img
+					src="images/logo1.png" alt="Logo" class="tm-site-logo" />
+						</a>
+                        <h1>Đăng nhập</h1>
+                        <div class="form-group form-input">
+                            <input type="text" name="username" id="name" value="" required/>
+                            <label for="name" class="form-label">Tên đăng nhập</label>
+                        </div>
+                        <div class="form-group form-input">
+                            <input type="password" name="password" id="password" value="" required />
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <div id="toggle" onclick="showHide();">
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" style="background-color: #26C3FF" value="Đăng nhập" class="submit" id="submit" name="submit" />
+                            <a id="linkregister" href="/register">Bạn chưa có tài khoản, đăng ký!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const password = document.getElementById("password");
+        const toggle = document.getElementById('toggle');
+
+        function showHide(){
+            if  (password.type === 'password'){
+                password.setAttribute('type', 'text');
+                toggle.classList.add('hide')
+            } else {
+                password.setAttribute('type', 'password');
+                toggle.classList.remove('hide')
+            }
+        }
+    </script>
+
+    <!-- JS -->
+    <script src="LoginRegisterForm/vendor/jquery/jquery.min.js"></script>
+    <script src="LoginRegisterForm/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

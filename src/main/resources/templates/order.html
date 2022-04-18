@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+	integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+	integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="static/BookingProduct/style.css">
+<link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<script defer src="fontawesome-free-5.15.3-web/js/all.js"></script>
+<link href="fontawesome-free-5.15.3-web/css/fontawesome.css"
+	rel="stylesheet">
+<link href="fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+<link href="fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+<script defer src="fontawesome-free-5.15.3-web/js/brands.js"></script>
+<script defer src="fontawesome-free-5.15.3-web/js/solid.js"></script>
+<script defer src="fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<script defer src="fontawesome-free-5.15.3-web/js/all.js"></script>
+<link href="fontawesome-free-5.15.3-web/css/fontawesome.css"
+	rel="stylesheet">
+<link href="fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+<link href="fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+<script defer src="fontawesome-free-5.15.3-web/js/brands.js"></script>
+<script defer src="fontawesome-free-5.15.3-web/js/solid.js"></script>
+<script defer src="fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<title>Order</title>
+</head>
+
+<body>
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="/home"> <img
+					src="/images/logo1.png" alt="Logo" class="tm-site-logo" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbars-rs-food" aria-controls="navbars-rs-food"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
+								data-toggle="dropdown">Home</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="/home">Home site</a>
+								<a class="dropdown-item" href="/staff">Staff Home</a>
+							</div>
+						</li>
+						<div class="dropdown ">
+							<button class="btn login_btn" type="button"
+								data-toggle="dropdown">
+								<i class="fas fa-user-tie"></i>Welcome, 
+								<span sec:authentication="name"></span>
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+							<li><a href="/profile"><i class="fas fa-user"></i>
+										Profile</a></li>
+							<li class="dropdown-divider"></li>
+								<li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+										Logout</a></li>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-3">
+				<div class="card" style="width: 18rem;">
+					<div class="card-header">Danh mục</div>
+					<form class="d-flex" action="#" th:action="@{/staff/order/search}"
+						method="GET">
+						<input class="form-control me-2" type="search" name="productName"
+							placeholder="Tìm kiếm sản phẩm..." aria-label="Search"
+							style="width: 500px;">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+					<div id="list-example" class="list-group" style="width: 287px;">
+						<a class="list-group-item list-group-item-action"
+							href="#list-item-2">Drinks </a> <a
+							class="list-group-item list-group-item-action"
+							href="#list-item-3">Foods </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-5">
+				<div data-bs-spy="scroll" data-bs-target="#list-example"
+					class="scrollspy-example ml-3" tabindex="0">
+					<h4 id="list-item-1">Sản phẩm nổi bật</h4>
+					<div class="container">
+						<div class="row" th:each="product : ${listProducts}">
+							<form th:id="'form' + ${product.id}" method="POST"
+								th:action="@{/saveNewOrder}" th:object="${order}">
+								<div class="col-sm">
+									<div class="card-product">
+										<img th:attr="src=@{${product.image}}" alt="Avatar"
+											style="width: 100%; height: 130px;">
+										<div class="container">
+											<div>
+												<span class="product-1" th:text="${product.productName}"><b></b></span>
+												<p th:text="${product.price}"></p>
+												<input type="hidden" name="product" th:value="${product.id}">
+												<input type="hidden" name="quantity" value="1"> <input
+													type="submit" th:id="'id' + ${product.id}"
+													th:onclick="|onClick('#form${product.id}')|"><i
+													class="fas fa-plus-circle"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<h4 class="mt-3" id="list-item-2">Drinks</h4>
+				<div class="container">
+					<div class="row" th:each="product : ${listDrinks}">
+						<form th:id="'form' + ${product.id}" method="POST"
+							th:action="@{/saveNewOrder}" th:object="${order}">
+							<div class="col-sm">
+								<div class="card-product">
+									<img th:attr="src=@{${product.image}}" alt="Avatar"
+										style="width: 100%; height: 130px;">
+									<div class="container">
+										<div>
+											<span class="product-1" th:text="${product.productName}"><b></b></span>
+											<p th:text="${product.price}"></p>
+											<input type="hidden" name="product" th:value="${product.id}">
+											<input type="hidden" name="quantity" value="1"> <input
+												type="submit" th:id="'id' + ${product.id}"
+												th:onclick="|onClick('#form${product.id}')|"><i
+												class="fas fa-plus-circle"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<h4 class="mt-3" id="list-item-3">Foods</h4>
+				<div class="container">
+					<div class="row" th:each="product : ${listFoods}">
+						<form th:id="'form' + ${product.id}" method="POST"
+							th:action="@{/saveNewOrder}" th:object="${order}">
+							<div class="col-sm">
+								<div class="card-product">
+									<img th:attr="src=@{${product.image}}" alt="Avatar"
+										style="width: 100%; height: 130px;">
+									<div class="container">
+										<div>
+											<span class="product-1" th:text="${product.productName}"><b></b></span>
+											<p th:text="${product.price}"></p>
+											<input type="hidden" name="product" th:value="${product.id}">
+											<input type="hidden" name="quantity" value="1"> <input
+												type="submit" th:id="'id' + ${product.id}"
+												th:onclick="|onClick('#form${product.id}')|"><i
+												class="fas fa-plus-circle"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+
+				<form action="#" th:action="@{/saveNewBill}" th:object="${bill}"
+					method="POST">
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">Giỏ hàng của tôi</div>
+
+						<div class="card-body">
+
+							<a class="navbar-brand" href="#"> <img
+								src="/images/logo1.png" alt="Logo" class="tm-site-logo"
+								style="width: 250px;" />
+							</a>
+
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"><span id="no-record"></span></li>
+								<table style="margin-left: 15px;">
+									<tbody>
+										<div th:each="order : ${listOrder}">
+											<span class="product-1"
+												th:text="${order.product.productName}"><b></b></span>
+											<h6 th:text="${order.product.price}"></h6>
+										</div>
+									</tbody>
+								</table>
+								<li class="list-group-item"><span id="total"
+									STYLE="font-weight: bold"></span></li>
+								<li class="list-group-item"><span id="totalgia"
+									STYLE="font-weight: bold"></span></li>
+
+
+							</ul>
+							<input type="hidden" th:field="*{id}" /> <input type="hidden"
+								th:field="*{createdBy}" /> <input type="hidden"
+								th:field="*{createdDate}" />
+							<div style="margin-left: 20px;">
+								<a type="button" class=" btn btn-outline-primary"
+									data-toggle="modal" data-target="#exampleModalCenter">Thanh
+									Toán</a> <a type="button" class="btn btn-outline-danger">Reset</a>
+							</div>
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+								role="dialog" aria-labelledby="exampleModalCenterTitle"
+								aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLongTitle">Hóa
+												đơn thanh toán</h5>
+											<button type="submit" class="close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body" th:each="bill : ${listBill}">
+											<!-- Thông tin hóa đơn -->
+											<div class="container bootstrap snippets bootdeys">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="panel panel-default invoice" id="invoice">
+															<div class="panel-body">
+																<div class="invoice-ribbon">
+																	<div class="ribbon-inner">PAID</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-6 top-left">
+																		<i class="fa fa-coffee"></i>
+																	</div>
+																	<div class="col-sm-6 top-right">
+																		<h3>Thanh toán hóa đơn</h3>
+																		<h3 class="marginright" th:text="${bill.id}"></h3>
+																		Date: <span class="marginright"
+																			th:text="${bill.createdDate}"></span>
+																	</div>
+																</div>
+																<hr>
+																<div class="row">
+																	<div class="col-xs-4 from">
+																		<p class="lead marginbottom"
+																			th:text="${bill.createdBy}"></p>
+																		<p>Địa chỉ: Hoà Hải, Ngũ Hành Sơn, Da Nang 550000</p>
+																		<p>Phone: 0236 3952 332</p>
+																		<p>Email: support@fpt-software.com</p>
+																	</div>
+																	<div class="col-xs-4 to">
+																		<p class="lead marginbottom">Khách hàng : Hoàng
+																			Tùng</p>
+																		<p>Phone: 0236 3952 332</p>
+																		<p>Email: tungnh@fsoft.com.vn</p>
+
+																	</div>
+																	<div class="col-xs-4 text-right payment-details">
+																		<p class="lead marginbottom payment-info">Thông
+																			tin chi tiết hóa đơn</p>
+																		Date:
+																		<p th:text="${bill.createdDate}"></p>
+																		<p>VAT: DK888-777</p>
+																		Account name:
+																		<p th:text="${bill.createdBy}"></p>
+																	</div>
+																</div>
+																<div class="row table-row">
+																	<table class="table table-striped">
+																		<thead>
+																			<tr>
+																				<th class="text-center" style="width: 5%">#</th>
+																				<th style="width: 50%">Món</th>
+																				<th class="text-right" style="width: 15%">Số
+																					lượng</th>
+																				<th class="text-right" style="width: 15%">Giá</th>
+																				<th class="text-right" style="width: 15%">Tổng</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<tr th:each="order : ${listOrder}">
+																				<td class="text-center"></td>
+																				<td th:text="${order.product.productName}"></td>
+																				<td class="text-right">1</td>
+																				<td class="text-right"
+																					th:text="${order.product.price}"></td>
+																				<td class="text-right"
+																					th:text="${order.product.price}"></td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+																<div class="row">
+																	<div class="col-xs-6 margintop">
+																		<p class="lead marginbottom">THANK YOU!</p>
+																		<button class="btn btn-success" id="invoice-print">
+																			<i class="fa fa-print"></i> In hóa đơn
+																		</button>
+																		<button class="btn btn-danger">
+																			<i class="fa fa-envelope-o"></i> Gửi email hóa đơn
+																		</button>
+																	</div>
+																	<div
+																		class="col-xs-6 text-right pull-right invoice-total">
+																		<p>Subtotal : 280000</p>
+																		<p>Discount (10%) : 28000</p>
+																		<p>VAT (8%) : 20160</p>
+																		<p>Total : 272160</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script>
+        function onClick(idForm) {
+
+            $(this).click(function(e){
+                e.preventDefault();
+        		$(idForm).submit();
+        	})
+        }
+    </script>
+</body>
+
+</html>
