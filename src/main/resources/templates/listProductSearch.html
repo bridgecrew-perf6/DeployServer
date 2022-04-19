@@ -13,25 +13,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.icon" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet'
+          type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <!-- Site CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/custom.css">
-
-    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/custom.css">
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -42,7 +43,7 @@
         <div class="container">
 
             <a class="navbar-brand" href="/home">
-                <img src="images/logo1.png" alt="Logo" class="tm-site-logo"/>
+                <img src="/images/logo1.png" alt="Logo" class="tm-site-logo"/>
             </a>
 
 
@@ -52,40 +53,39 @@
             <div class="col-3">
                 <form class="search-san-pham" action="#" th:action="@{/search}" method="GET">
                     <div class="row">
-                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm...">
+                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
                         <button type="submit" ><i class="fa fa-search"></i></button>
                     </div>
                 </form>
             </div>
             <div class="collapse navbar-collapse" id="navbars-rs-food">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                <ul class="col-12 navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/news">Bài viết</a></li>
+                    <li class="nav-item "><a class="nav-link" href="/menu">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Liên hệ</a></li>
                 </ul>
                 <div sec:authorize="isAnonymous()">
                     <button class="btn login_btn"
-                            style="height: 45px; background-color: #75d8ff;">
-                        <a class="text-center" href="/login">Login</a>
+                            style="height: 50px; background-color: #26C3FF;">
+                        <a class="text-center" href="/login" style="color: white">Đăng nhập</a>
                     </button>
                 </div>
                 <div sec:authorize="hasRole('ADMIN')">
                     <div class="dropdown ">
                         <button class="btn login_btn" type="button"
                                 data-toggle="dropdown">
-                            <i class="fas fa-user-tie"></i>Welcome, boss<span class="caret"></span>
+                            <i class="fas fa-user-tie"></i><span sec:authentication="name"><span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="/admin"><i class="fas fa-user"></i>
-                                Admin page</a></li>
+                                Quản lý cửa hàng</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="/profile"><i class="fas fa-user"></i>
-                                Profile</a></li>
+                                Hồ sơ cá nhân</a></li>
                             <li class="dropdown-divider"></li>
-                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
-                                Logout</a></li>
+                            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
                         </ul>
                     </div>
                 </div>
@@ -96,19 +96,19 @@
                     <div class="dropdown ">
                         <button class="btn login_btn" type="button"
                                 data-toggle="dropdown">
-                            <i class="fas fa-user-tie"></i>Welcome,
+                            <i class="fas fa-user-tie"></i>
                             <span sec:authentication="name"></span>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="/staff"><i class="fas fa-user"></i>
-                                Staff page</a></li>
+                            <li><a href="/staff/menu"><i class="fas fa-user"></i>
+                                Nhân viên</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="/profile"><i class="fas fa-user"></i>
-                                Profile</a></li>
+                                Hồ sơ</a></li>
                             <li class="dropdown-divider"></li>
-                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
-                                Logout</a></li>
+                            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
                         </ul>
                     </div>
                 </div>
@@ -117,16 +117,19 @@
                     <div class="dropdown ">
                         <button class="btn login_btn" type="button"
                                 data-toggle="dropdown">
-                            <i class="fas fa-user-tie"></i>Welcome,
+                            <i class="fas fa-user-tie"></i>
                             <span sec:authentication="name"></span>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="/profile"><i class="fas fa-user"></i>
-                                Profile</a></li>
+                                Hồ sơ</a></li>
                             <li class="dropdown-divider"></li>
-                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
-                                Logout</a></li>
+                            <li><a th:href="@{'/historyOrder/' + ${account.username}}"><i class="fas fa-user"></i>
+                                Lịch sử mua hàng</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
                         </ul>
                     </div>
                 </div>
@@ -185,7 +188,7 @@
             <div class="col-md-4">
                 <i class="fa fa-volume-control-phone"></i>
                 <div class="overflow-hidden">
-                    <h4>Phone</h4>
+                    <h4>Số điện thoại liên lạc</h4>
                     <p class="lead">
                         0236 3952 332
                     </p>
@@ -203,52 +206,35 @@
             <div class="col-md-4">
                 <i class="fa fa-map-marker"></i>
                 <div class="overflow-hidden">
-                    <h4>Location</h4>
+                    <h4>Địa chỉ</h4>
                     <p class="lead">
-                        FPT Complex building, FPT City, Hoa Hai, Ngu Hanh Son Ward, Da Nang, 550000
+                        FPT University, FPT City, Phường Hòa Hải, Quận Ngũ Hành Sơn, Thành phố Đà Nẵng
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End Contact info -->
 
-<!-- Start Footer -->
 <footer class="footer-area bg-f">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <h3>About Us</h3>
-                <p>Our Cafe delivers way beyond the traditional coffee shop favorites (although we think our homemade pastries are pretty good). We have traditional breakfast choices, including eggs, omelettes, pancakes, and plenty of healthy options (including gluten free, vegetarian, and vegan).  Be sure to check out our weekend specials, when we go all out to provide you with new options that are delicious and different.   Finally,  we also serve a wide variety of salads,  sandwiches and flatbreads for lunch-lovers.</p>
+            <div class="col-lg-4 col-md-6">
+                <h3>Cửa hàng</h3>
+                <p>Mini-mart đã được mở tại Đà Nẵng! Chúng tôi rất vui khi được giới thiệu với bạn về của hàng của chúng tôi.
+                    Nếu bạn muốn có một trải nghiệm mua sắm thú vị, mini-mart sẽ cung cấp cho bạn đầy đủ những mặt hàng mà bạn
+                    cần như thức ăn, đồ uống, bánh kẹo,...</p>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Opening hours</h3>
-                <p><span class="text-color">Monday-Fri: </span>6:Am - 10:Pm</p>
-                <p><span class="text-color">Sat-Sun: </span>7:Am - 4:Pm</p>
+            <div class="col-lg-4 col-md-6">
+                <h3>Thời gian mở của</h3>
+                <p><span class="text-color">Thứ 2 - Thứ 6 </span>8:AM - 10:PM</p>
+                <p><span class="text-color">Cuối tuần: </span>8:AM - 12:PM</p>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Contact information</h3>
-                <p class="lead">FPT Complex building, FPT City, Hoa Hai, Ngu Hanh Son Ward, Da Nang, 550000</p>
+            <div class="col-lg-4 col-md-6">
+                <h3>Thông tin liên hệ</h3>
+                <p class="lead">FPT University, FPT City, Phường Hòa Hải, Quận Ngũ Hành Sơn, Thành phố Đà Nẵng</p>
                 <p class="lead"><a href="#">0236 3952 332</a></p>
-                <p><a href="#"> fptcity.support@fpt.com.vn</a></p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h3>Subscribe</h3>
-                <div class="subscribe_form">
-                    <form class="subscribe_form">
-                        <input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-                        <button type="submit" class="submit">SUBSCRIBE</button>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-                <ul class="list-inline f-social">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
+                <p><a href="#">fptcity.support@fpt.com.vn</a></p>
             </div>
         </div>
     </div>
@@ -257,9 +243,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+
                     <p class="copy_right text-center">
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#"> Maison Coffee </a> | Design By :
-                        <a href="https://www.fpt-software.com/">fsoft's team</a>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | <a
+                            href="#"> Mini-mart </a> | Design By :
+                        <a href="https://www.fpt-software.com/">mini-mart's team</a>
                     </p>
                 </div>
             </div>

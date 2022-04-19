@@ -169,14 +169,18 @@
 				<div class="col-lg-12">
 					<div class="special-menu text-center">
 							<div class="button-group filter-button-group">
-								<button data-filter=".drinks">Đồ uống</button>
-								<button data-filter=".food">Thức ăn</button>
-								<button data-filter=".candy">Bánh kẹo</button>
-								<button data-filter=".ice">Kem</button>
-								<button data-filter=".snack">Đồ ăn vặt</button>
-								<button data-filter=".vegetable">Rau củ quả</button>
-								<button data-filter=".milk">Sữa</button>
-
+								<button data-filter=".allProduct" style="width: 250px">Tất cả</button>
+								<button data-filter=".vegetable" style="width: 250px">Rau củ quả</button>
+								<button data-filter=".meat" style="width: 250px">Thịt</button>
+								<button data-filter=".frozen" style="width: 250px">Đồ đông lạnh</button>
+								<button data-filter=".dry" style="width: 250px">Đồ khô</button>
+								<button data-filter=".processed" style="width: 250px">Thực phẩm chế biến</button>
+								<button data-filter=".junk" style="width: 250px">Đồ ăn vặt</button>
+								<button data-filter=".milk" style="width: 250px">Sữa</button>
+								<button data-filter=".drink" style="width: 250px">Thức uống</button>
+								<button data-filter=".cosmetic" style="width: 250px">Mỹ phẩm</button>
+								<button data-filter=".pesonal" style="width: 250px">Cá nhân</button>
+								<button data-filter=".baby" style="width: 250px">trẻ em</button>
 							</div>
 						
 					</div>
@@ -184,7 +188,20 @@
 			</div>
 				
 			<div class="row special-list">
-				<div class="col-lg-3 col-md-6 special-grid drinks"  th:each="product:${listDrinks}">
+				<div class="col-lg-3 col-md-6 special-grid allProduct"  th:each="product:${listProduct}">
+					<div class="list-sp-lien-quan">
+						<div class="sp">
+							<a th:href="@{'/product/' + ${product.id}}">
+								<img th:attr="src=@{${product.image}}" alt="">
+								<p th:text="${product.productName}"></p>
+								<p>Giá: <span th:text="${product.price}"></span> VND</p>
+								<a type="button" class="Add_product">Xem chi tiết sản phẩm</a>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 special-grid vegetable"  th:each="product:${listVegetable}">
 					<div class="list-sp-lien-quan">
 					<div class="sp">
 						<a th:href="@{'/product/' + ${product.id}}">
@@ -197,7 +214,7 @@
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-md-6 special-grid food"  th:each="product:${listFoods}">
+				<div class="col-lg-3 col-md-6 special-grid meat"  th:each="product:${listMeat}">
 					<div class="list-sp-lien-quan">
 						<div class="sp">
 							<a th:href="@{'/product/' + ${product.id}}">
@@ -210,7 +227,7 @@
 					</div>
 				</div>
 
-				<div class="col-lg-3 col-md-6 special-grid candy"  th:each="product:${listCandy}">
+				<div class="col-lg-3 col-md-6 special-grid processed"  th:each="product:${listProcessed}">
 					<div class="list-sp-lien-quan">
 						<div class="sp">
 							<a th:href="@{'/product/' + ${product.id}}">
@@ -222,7 +239,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 special-grid ice"  th:each="product:${listIce}">
+				<div class="col-lg-3 col-md-6 special-grid frozen"  th:each="product:${listFrozen}">
 					<div class="list-sp-lien-quan">
 						<div class="sp">
 							<a th:href="@{'/product/' + ${product.id}}">
@@ -234,7 +251,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 special-grid snack"  th:each="product:${listSnack}">
+				<div class="col-lg-3 col-md-6 special-grid dry"  th:each="product:${listDry}">
 					<div class="list-sp-lien-quan">
 						<div class="sp">
 							<a th:href="@{'/product/' + ${product.id}}">
@@ -246,7 +263,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 special-grid vegetable"  th:each="product:${listVegetable}">
+				<div class="col-lg-3 col-md-6 special-grid junk"  th:each="product:${listJunk}">
 					<div class="list-sp-lien-quan">
 						<div class="sp">
 							<a th:href="@{'/product/' + ${product.id}}">
@@ -270,7 +287,54 @@
 						</div>
 					</div>
 				</div>
-
+				<div class="col-lg-3 col-md-6 special-grid drink"  th:each="product:${listDrink}">
+					<div class="list-sp-lien-quan">
+						<div class="sp">
+							<a th:href="@{'/product/' + ${product.id}}">
+								<img th:attr="src=@{${product.image}}" alt="">
+								<p th:text="${product.productName}"></p>
+								<p>Giá: <span th:text="${product.price}"></span> VND</p>
+								<button class="Add_product">Xem chi tiết sản phẩm</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 special-grid cosmetic"  th:each="product:${listCosmetic}">
+					<div class="list-sp-lien-quan">
+						<div class="sp">
+							<a th:href="@{'/product/' + ${product.id}}">
+								<img th:attr="src=@{${product.image}}" alt="">
+								<p th:text="${product.productName}"></p>
+								<p>Giá: <span th:text="${product.price}"></span> VND</p>
+								<button class="Add_product">Xem chi tiết sản phẩm</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 special-grid pesonal"  th:each="product:${listPesonal}">
+					<div class="list-sp-lien-quan">
+						<div class="sp">
+							<a th:href="@{'/product/' + ${product.id}}">
+								<img th:attr="src=@{${product.image}}" alt="">
+								<p th:text="${product.productName}"></p>
+								<p>Giá: <span th:text="${product.price}"></span> VND</p>
+								<button class="Add_product">Xem chi tiết sản phẩm</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 special-grid baby"  th:each="product:${listBaby}">
+					<div class="list-sp-lien-quan">
+						<div class="sp">
+							<a th:href="@{'/product/' + ${product.id}}">
+								<img th:attr="src=@{${product.image}}" alt="">
+								<p th:text="${product.productName}"></p>
+								<p>Giá: <span th:text="${product.price}"></span> VND</p>
+								<button class="Add_product">Xem chi tiết sản phẩm</button>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
