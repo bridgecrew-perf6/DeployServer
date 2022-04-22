@@ -12,4 +12,5 @@ public interface IAccountService {
 	public Account get(Long id);
 	void save(Account account);
 	public Account findByPhone(String phone);
+	public Account findByEmail(String email);
 }

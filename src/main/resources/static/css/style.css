@@ -1446,21 +1446,22 @@ blockquote {
 
 }
 .noidung p{
-	font-size: 12px;
+	font-weight: bold;
+	font-size: 16px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-top: 10px;
 }
 .noidung{
-	background-color:  #F4F4F4;
+	background-color:  #F8F9FA;
 }
 .noidung h2{
 	margin-left: 10px;
 	margin-top: 10px;
 }
 .noidung img{
-	height: 400px;
-	width: 400px;
+	height: 500px;
+	width: 500px;
 	margin-left: 10px;
 }
 .mo-ta-thong-tin{

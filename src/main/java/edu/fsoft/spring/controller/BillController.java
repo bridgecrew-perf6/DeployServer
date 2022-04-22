@@ -132,8 +132,8 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[6].toString());
-			arr[i].setCount(Float.parseFloat(a[7].toString()));
+			arr[i].setText(a[7].toString());
+			arr[i].setCount(Float.parseFloat(a[8].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -152,8 +152,8 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[6].toString());
-			arr[i].setCount(Float.parseFloat(a[7].toString()));
+			arr[i].setText(a[7].toString());
+			arr[i].setCount(Float.parseFloat(a[8].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -172,8 +172,8 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[7].toString());
-			arr[i].setCount(Float.parseFloat(a[8].toString()));
+			arr[i].setText(a[8].toString());
+			arr[i].setCount(Float.parseFloat(a[9].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -212,8 +212,8 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[9].toString());
-			arr[i].setCount(Float.parseFloat(a[10].toString()));
+			arr[i].setText(a[10].toString());
+			arr[i].setCount(Float.parseFloat(a[11].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -231,8 +231,8 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[9].toString());
-			arr[i].setCount(Float.parseFloat(a[10].toString()));
+			arr[i].setText(a[10].toString());
+			arr[i].setCount(Float.parseFloat(a[11].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -251,7 +251,7 @@ public class BillController {
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
 			arr[i].setText(a[1].toString());
-			arr[i].setCount(Float.parseFloat(a[6].toString()));
+			arr[i].setCount(Float.parseFloat(a[7].toString()));
 			list.add(arr[i]);
 			i++;
 		}
@@ -290,7 +290,7 @@ public class BillController {
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
 			arr[i].setText(a[1].toString());
-			arr[i].setCount(Float.parseFloat(a[6].toString()));
+			arr[i].setCount(Float.parseFloat(a[7].toString()));
 			list.add(arr[i]);
 			i++;
 		}

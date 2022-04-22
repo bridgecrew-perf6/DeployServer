@@ -22,49 +22,57 @@
                 
                 <div class="booking-image booking-img" alt="Booking Image" style="background-image: url(https://source.unsplash.com/1600x900/?coffee); height: 725px;"></div>
                 <div class="booking-form">
-                    <form id="booking-form" action="#" th:action="@{/addAccount}" th:object="${account}" method="post">
+                    <form id="register-form" action="#" th:object="${account}" method="post">
                         <a class="navbar-brand" href="/home"> <img
 					src="images/logo1.png" alt="Logo" class="tm-site-logo" />
 						</a>
                         <h1>Đăng ký</h1>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{username}" id="name" value="" required/>
+                            <input type="text" th:field="*{username}" id="name" value="" />
                             <label for="name" class="form-label">Tên đăng nhập</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
+                            <div style="color: red; background: #10141a" id="namefail"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="password" th:field="*{password}" id="password" value="" required />
+                            <input type="password" th:field="*{password}" id="password" value=""  />
                             <label for="password" class="form-label">Mật khẩu</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="password"   value="" required />
-                            <label for="password" class="form-label">Nhập lại mật khẩu</label>
+                            <input type="password" id="repassword"  value=""  />
+                            <label for="repassword" class="form-label">Nhập lại mật khẩu</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{email}" id="email" value="" required />
+                            <input type="text" th:field="*{email}" id="email" value=""  />
                             <label for="email" class="form-label">Email</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
+                            <div style="color: red; background: #10141a" id="emailfail"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{fullname}"  value="" required />
-                            <label for="email" class="form-label">Họ và tên</label>
+                            <input type="text" th:field="*{fullname}" id="fullname"  value=""  />
+                            <label for="fullname" class="form-label">Họ và tên</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{phone}"  value="" required />
-                            <label for="email" class="form-label">Số điện thoại</label>
+                            <input type="text" th:field="*{phone}" id="phone" value=""  />
+                            <label for="phone" class="form-label">Số điện thoại</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
+                            <div style="color: red; background: #10141a" id="phonefail"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{gender}"  value="" required />
-                            <label for="email" class="form-label">Giới tính</label>
-
+                            <input type="text" th:field="*{gender}"  value=""  />
+                            <label class="form-label">Giới tính</label>
+                            <div class="error" style="color: red; background: #10141a"></div>
                         </div>
                         <div class="form-group form-input">
-                            <input type="text" th:field="*{address}"  value="" required />
-                            <label for="email" class="form-label">Địa chỉ</label>
+                            <input type="text" th:field="*{address}" id="address" value=""  />
+                            <label for="address" class="form-label">Địa chỉ</label>
                         </div>                        
                         <div class="form-submit">
-                            <input type="submit" style="background-color: #26C3FF" value="Đăng ký" class="submit" id="submit" name="submit" />
+                            <input th:onclick="addAccount()" style="background-color: #26C3FF" value="Đăng ký" class="submit" id="submit" name="submit" />
                             <a id="linkregister" href="/login">Đăng nhập!</a>
                         </div>
-                        </div>                        
                     </form>                  
                 </div>
             </div>
@@ -74,5 +82,25 @@
     <!-- JS -->
     <script src="LoginRegisterForm/vendor/jquery/jquery.min.js"></script>
     <script src="LoginRegisterForm/js/main.js"></script>
+    <script th:src="@{/js/form_validate.js}"></script>
+    <script th:src="@{/js/register_form.js}"></script>
+    <script>
+        Validator({
+            form: '#register-form',
+            errorSelector: '.error',
+            rules: [
+                Validator.isRequired('#name'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+                Validator.minLength('#password', 8),
+                Validator.isRequired('#repassword'),
+                Validator.isConfirmed('#repassword', function () {return document.querySelector('#register-form #password').value;}),
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#phone'),
+                Validator.isPhone('#phone'),
+            ]
+        });
+    </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

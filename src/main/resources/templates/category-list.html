@@ -90,17 +90,20 @@
         <div class="card-header text-center">
             <h1>Loại sản phẩm</h1>
         </div>
-        <form class="row g-3 ml-2" action="#" th:action="@{/saveCategory}" th:object="${category}" method="post">
+        <form id="add-category-form" class="row g-3 ml-2" action="#" th:action="@{/saveCategory}" th:object="${category}" method="post">
             <div class="col-12">
                 <input type="hidden" th:field="*{id}" class="form-control" placeholder="Ex: Tra Sua">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-12">
                 <label class="form-label">Loại sản phẩm</label>
-                <input type="text" th:field="*{type}" class="form-control" placeholder="Ex: Tra Sua">
+                <input id="category" type="text" th:field="*{type}" class="form-control" placeholder="Ex: Tra Sua">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-12 mb-3">
                 <button type="submit" class="btn btn-outline-success">Thêm loại sản phẩm</button>
                 <a type="submit" href="/admin" class="btn btn-outline-danger">Quay về trang quản lý</a>
+                <div class="error" style="color: red; "></div>
             </div>
         </form>
     </div>
@@ -117,19 +120,19 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
-
+                                <div class="card" style="margin-top: 10px; width: 1450px; margin-left: 100px; margin-right: 100px" >
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Loại sản phẩm</th>
+                                        <th scope="col" style="width: 250px">ID</th>
+                                        <th scope="col" style="width: 600px">Loại sản phẩm</th>
                                         <th scope="col">Chức năng</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="category : ${listCategory}">
-                                        <td th:text="${category.id}">Action</th>
+                                        <td th:text="${category.id}"></td>
                                         <td th:text="${category.type}"></td>
                                         <td>
                                             <a class="btn btn-primary" th:href="@{'/editCategory/' + ${category.id}}">Chỉnh sửa</a>
@@ -137,7 +140,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,6 +190,16 @@
         $("#exampleModalCenter").modal('show');
         $(".yes").prop("href", "/deleteCategory/"+id)
     }
+</script>
+<script th:src="@{/js/form_validate.js}"></script>
+<script>
+    Validator({
+        form: '#add-category-form',
+        errorSelector: '.error',
+        rules: [
+            Validator.isRequired('#category'),
+        ]
+    });
 </script>
 </body>
 

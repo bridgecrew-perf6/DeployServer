@@ -90,33 +90,39 @@
         <div class="card-header text-center">
             <h1>Nhà cung cấp</h1>
         </div>
-        <form class="row g-3 ml-2" action="#" th:action="@{/saveSupplierByStaff}" th:object="${supplier}" method="post">
+        <form id="add-supplier-form" class="row g-3 ml-2" action="#" th:action="@{/saveSupplierByStaff}" th:object="${supplier}" method="post">
             <div class="col-12">
                 <input type="hidden" th:field="*{id}" class="form-control" >
             </div>
             <div class="col-12">
                 <label class="form-label">Nhà cung cấp</label>
-                <input type="text" th:field="*{name}" class="form-control" placeholder="Hãy nhập nhà cung cấp">
+                <input id="supplierName" type="text" th:field="*{name}" class="form-control" placeholder="Hãy nhập nhà cung cấp">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Số điện thoại</label>
-                <input type="text" th:field="*{phone}" class="form-control" placeholder="Hãy nhập số điện thoại">
+                <input id="phone" type="text" th:field="*{phone}" class="form-control" placeholder="Hãy nhập số điện thoại">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Địa chỉ</label>
-                <input type="text" th:field="*{address}" class="form-control" placeholder="Hãy nhập địa chỉ">
+                <input id="address" type="text" th:field="*{address}" class="form-control" placeholder="Hãy nhập địa chỉ">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Thành phố</label>
-                <input type="text" th:field="*{city}" class="form-control" placeholder="Hãy nhập thành phố">
+                <input id="city" type="text" th:field="*{city}" class="form-control" placeholder="Hãy nhập thành phố">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Quốc gia</label>
-                <input type="text" th:field="*{country}" class="form-control" placeholder="Hãy nhập quốc gia">
+                <input id="country" type="text" th:field="*{country}" class="form-control" placeholder="Hãy nhập quốc gia">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-12">
                 <label class="form-label">Homepage</label>
-                <input type="text" th:field="*{homepage}" class="form-control" placeholder="Hãy nhập homepage">
+                <input id="homepage" type="text" th:field="*{homepage}" class="form-control" placeholder="Hãy nhập homepage">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-12 mb-3">
                 <button type="submit" class="btn btn-outline-success">Thêm nhà cung cấp</button>
@@ -210,6 +216,22 @@
         $(".yes").prop("href", "/staff/deleteSupplier/"+id)
     }
 </script>
+                        <script th:src="@{/js/form_validate.js}"></script>
+                        <script>
+                            Validator({
+                                form: '#add-supplier-form',
+                                errorSelector: '.error',
+                                rules: [
+                                    Validator.isRequired('#supplierName'),
+                                    Validator.isRequired('#productPrice'),
+                                    Validator.isRequired('#phone'),
+                                    Validator.isPhone('#phone'),
+                                    Validator.isRequired('#address'),
+                                    Validator.isRequired('#city'),
+                                    Validator.isRequired('#country'),
+                                ]
+                            });
+                        </script>
 </body>
 
 </html>

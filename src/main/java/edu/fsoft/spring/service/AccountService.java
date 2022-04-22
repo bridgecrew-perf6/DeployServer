@@ -51,4 +51,5 @@ public class AccountService implements IAccountService {
 	public Account findByPhone(String phone){
 		return repo.findByPhone(phone);
 	}
+	public Account findByEmail(String email) {return repo.findByEmail(email);}
 }

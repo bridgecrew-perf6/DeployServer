@@ -34,6 +34,9 @@ public class Bill {
     @Column
     private float total;
 
+    @Column
+    private boolean isCancel;
+
     public int getId() {
         return id;
     }
@@ -80,5 +83,13 @@ public class Bill {
 
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+    public boolean isCancel() {
+        return isCancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        isCancel = cancel;
     }
 }

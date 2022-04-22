@@ -26,14 +26,16 @@
                     <a class="navbar-brand" href="/home"> <img
                             src="images/logo1.png" alt="Logo" class="tm-site-logo" />
                     </a>
-                    <h1>Đăng nhập</h1>
+                    <h1 style="font-family: serif;">Đăng nhập</h1>
                     <div class="form-group form-input">
-                        <input  style="background-color: #26C3FF" type="text" name="username" id="name" value="" required/>
-                        <label for="name" class="form-label">Tên đăng nhập</label>
+                        <input  type="text" name="username" id="name" value="" required/>
+                        <label for="name" class="form-label" style="font-family: serif;">Tên đăng nhập</label>
+                        <div class="error" style="color: red; background: #10141a"></div>
                     </div>
                     <div class="form-group form-input">
                         <input type="password" name="password" id="password" value="" required />
-                        <label for="password" class="form-label">Mật khẩu</label>
+                        <label for="password" class="form-label"  style="font-family: serif;">Mật khẩu</label>
+                        <div class="error" style="color: red; background: #10141a"></div>
                         <div id="toggle" onclick="showHide();">
                         </div>
                     </div>
@@ -41,7 +43,7 @@
                         <p style="color: #DD4B39; font-family: Arial sans-serif">Tên đăng nhập hoặc mật khẩu không đúng</p>
                     </div>
                     <div class="form-submit">
-                        <input type="submit" value="Đăng nhập" class="submit" id="submit" name="submit" />
+                        <input type="submit" style="background-color: #26C3FF" value="Đăng nhập" class="submit" id="submit" name="submit" />
                         <a id="linkregister" href="/register">Bạn chưa có tài khoản, đăng ký!</a>
                     </div>
                 </form>

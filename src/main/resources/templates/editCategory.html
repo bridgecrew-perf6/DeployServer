@@ -84,7 +84,7 @@
 	</nav>
 </header>
 <div class="container-fluid" style="padding-top: 150px;">
-	<form class="card mt-4" action="#" th:action="@{/saveCategory}" th:object="${category}" method="post">
+	<form id="edit-category-form" class="card mt-4" action="#" th:action="@{/saveCategory}" th:object="${category}" method="post">
 		<div class="card-header text-center">
 			<h1>Chỉnh sửa loại sản phẩm</h1>
 		</div>
@@ -94,15 +94,17 @@
 			</div>
 			<div class="col-md-12">
 				<label class="form-label">Loại sản phẩm</label>
-				<input type="text" th:field="*{type}" class="form-control">
+				<input id="category" type="text" th:field="*{type}" class="form-control">
+				<div class="error" style="color: red;"></div>
 			</div>
 			<div class="col-6 mb-6">
 				<button type="submit" class="btn btn-outline-success">Lưu chỉnh sửa</button>
 				<a type="submit" href="/admin/category" class="btn btn-outline-danger">Quay lại trang</a>
 			</div>
 		</form>
+	</form>
 </div>
-</div>
+
 <!-- CSS -->
 <style>
 	.card {
@@ -119,5 +121,15 @@
 		background-repeat: no-repeat;
 	}
 </style>
+<script th:src="@{/js/form_validate.js}"></script>
+<script>
+	Validator({
+		form: '#edit-category-form',
+		errorSelector: '.error',
+		rules: [
+			Validator.isRequired('#category'),
+		]
+	});
+</script>
 </body>
 </html>

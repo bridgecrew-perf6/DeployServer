@@ -104,7 +104,8 @@
         <div class="col-9">
             <div  class="col-md-6">
                 <label style="margin-top: 15px" class="form-label">Tháng: </label>
-                <select class="form-select" aria-label="Default select example" id="month">
+                <select class="form-select" aria-label="Default select example" id="month" def>
+                    <option value="" selected disabled hidden></option>
                     <option >1</option>
                     <option >2</option>
                     <option >3</option>
@@ -152,8 +153,7 @@
     </div>
 
 </div>
-
-</div>
+<script th:src="@{/js/localTime.js}"></script>
 
 <script>
     let label = [], color = [];
@@ -214,11 +214,6 @@
         $("#itemId").val(id);
         $("#exampleModalCenter").modal('show');
         $(".yes").prop("href", "/deleteProduct/"+id)
-    }
-    function onCheck() {
-        let year = document.getElementById("year").value;
-        let month = document.getElementById("month").value;
-        $(".yes").prop("href", "/admin/statistic/revenueByCategory/"+month+"/"+year)
     }
 </script>
 </body>

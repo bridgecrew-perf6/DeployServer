@@ -111,10 +111,7 @@
                 <th scope="col">Giá</th>
                 <th scope="col">Loại SP</th>
                 <th scope="col">Nhà cung cấp</th>
-                <th scope="col">Ngày sản xuất</th>
                 <th scope="col">Ngày hết hạn</th>
-                <th scope="col">Mã vạch</th>
-
             </tr>
             </thead>
             <tbody>
@@ -126,9 +123,7 @@
                 <th scope="col" th:text="${product.price}"></th>
                 <th scope="col" th:text="${product.category.type}"></th>
                 <th scope="col" th:text="${product.supplier.name}"></th>
-                <th scope="col" th:text="${product.manufactureDate}"></th>
                 <th scope="col" th:text="${product.expirationDate}"></th>
-                <th scope="col" th:text="${product.productCode}"></th>
                 <td><a th:href="@{'/editProduct/' + ${product.id}}">Chỉnh sửa</a>
                     <a href="#" th:attr="data-id=${product.id}" onclick="onDelete(this)">Xóa </a>	&nbsp;&nbsp;&nbsp;&nbsp;
                 </td>

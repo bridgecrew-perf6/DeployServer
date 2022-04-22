@@ -3,6 +3,7 @@ package edu.fsoft.spring.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.fsoft.spring.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,10 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.fsoft.spring.interfaceService.IAccountService;
@@ -39,21 +37,29 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/addAccount", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("account") Account account) {	
-		if(accountService.findByUsername(account.getUsername()) == null) {
-			account.setRole("ADMIN");
+	@ResponseBody
+	public ResponseModel newAccount(@ModelAttribute("account") Account account) {
+		if(accountService.findByUsername(account.getUsername()) != null) {
+//			String usernameErr = "";
+//			model.addAttribute("Tên đăng nhập đã được sủ dụng!", usernameErr);
+//			mode
+			return new ResponseModel(false,"Tên đăng nhập đã được sủ dụng!");
+		} else if(accountService.findByEmail(account.getEmail()) != null) {
+//			String emailErr = "";
+//			model.addAttribute("Email đã được sủ dụng!", emailErr);
+			System.out.println(account.getEmail());
+			return new ResponseModel(false,"Email đã được sủ dụng!");
+		} else if(accountService.findByPhone(account.getPhone()) != null) {
+//			String phoneErr = "";
+//			model.addAttribute("Số điện thoại đã được sủ dụng!", phoneErr);
+			return new ResponseModel(false,"Số điện thoại đã được sủ dụng!");
+		} else {
+			account.setRole("USER");
 			account.setPassword(passwordEncoder.encode(account.getPassword()));
 			account.setPoint(0);
-			accountService.save(account);	
-			return "login";
-		} else {
-			return "registerFail";
+			accountService.save(account);
+			return new ResponseModel(true,"Đăng ký tài khoản thành công");
 		}
-	}
-	@RequestMapping("/updateProfile")
-	public String updateProfile(@ModelAttribute("account") Account account){
-		accountService.save(account);
-		return "redirect:/home";
 	}
 
 //	@RequestMapping("/profile/{id}")

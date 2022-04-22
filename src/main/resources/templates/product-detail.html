@@ -162,23 +162,23 @@
         <form class="product" action="" th:object="${product}" method="post">
         <div class="mo-ta-thong-tin">
           <div class="row">
-            <div class="col-7">
+            <div class="col-6" >
               <h2>Mô tả</h2>
             </div>
-            <div class="col-5">
+            <div class="col-6">
               <h2>Thông tin</h2>
             </div>
           </div>
         </div>
         <div class="noidung">
           <div class="row">
-            <div class="col-7">
+            <div class="col-6">
               <h2 th:text="${product.productName}"></h2>
               <img th:attr="src=@{${product.image}}" alt="">
               <p th:text="${product.description}">
               </p>
             </div>
-            <div class="col-5">
+            <div class="col-6">
               <div class="row">
                 <div class="col-6">
                   <p>Xuất sứ</p>

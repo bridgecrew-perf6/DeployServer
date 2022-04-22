@@ -87,29 +87,29 @@
             <div class="card-header text-center">
                 <h1>Chỉnh sửa sản phẩm</h1>
             </div>
-        <form class="row g-3 ml-2" action="#" th:action="@{/saveProductByStaff}" th:object="${product}" method="post">
+        <form id="edit-product-form" class="row g-3 ml-2" action="#" th:action="@{/saveProductByStaff}" th:object="${product}" method="post">
             <div class="col-12">
                 <input type="hidden" th:field="*{id}" class="form-control" >
             </div>
             <div class="col-12">
                 <label class="form-label">Tên sản phẩm</label>
-                <input type="text" th:field="*{productName}" class="form-control" >
+                <input id="productName" type="text" th:field="*{productName}" class="form-control" >
             </div>
             <div class="col-md-6">
                 <label class="form-label">Giá</label>
-                <input type="text" th:field="*{price}" class="form-control">
+                <input id="productPrice" type="text" th:field="*{price}" class="form-control">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Số lượng</label>
-                <input type="text" th:field="*{quantity}" class="form-control" >
+                <input id="quantity" type="text" th:field="*{quantity}" class="form-control" >
             </div>
             <div class="col-md-6">
                 <label class="form-label">Mã vạch</label>
-                <input type="text" th:field="*{productCode}" class="form-control">
+                <input id="productCode" type="text" th:field="*{productCode}" class="form-control">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Ảnh sản phẩm</label>
-                <input type="text" th:field="*{image}" class="form-control">
+                <input id="image" type="text" th:field="*{image}" class="form-control">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Loại sản phẩm</label>
@@ -131,31 +131,38 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Thành phần</label>
-                <input type="text" th:field="*{ingredient}" class="form-control">
+                <input id="ingredient" type="text" th:field="*{ingredient}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Hướng dẫn sử dụng</label>
-                <input type="text" th:field="*{intruction}" class="form-control">
+                <input id="intruction" type="text" th:field="*{intruction}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Cách bảo quản</label>
-                <input type="text" th:field="*{preservation}" class="form-control">
+                <input id="preservation" type="text" th:field="*{preservation}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Xuất xứ</label>
-                <input type="text" th:field="*{origin}" class="form-control">
+                <input id="origin" type="text" th:field="*{origin}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Ngày sản xuất</label>
                 <input type="text" th:field="*{manufactureDate}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Ngày hết hạn</label>
                 <input type="text" th:field="*{expirationDate}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-12">
                 <label class="form-label">Mô tả sản phẩm</label>
                 <input type="text" th:field="*{description}" class="form-control">
+                <div class="error" style="color: red; "></div>
             </div>
             <div class="col-12 mb-3">
                 <button type="submit" class="btn btn-outline-success">Lưu chỉnh sửa</button>
@@ -163,6 +170,7 @@
             </div>
 
         </form>
+    </div>
     </div>
     <!-- CSS -->
     <style>
@@ -180,5 +188,25 @@
             background-repeat: no-repeat;
         }
     </style>
+        <script th:src="@{/js/form_validate.js}"></script>
+        <script>
+            Validator({
+                form: '#edit-product-form',
+                errorSelector: '.error',
+                rules: [
+                    Validator.isRequired('#productName'),
+                    Validator.isRequired('#productPrice'),
+                    Validator.isActivePrice('#productPrice'),
+                    Validator.isRequired('#quantity'),
+                    Validator.isActiveInt('#quantity'),
+                    Validator.isRequired('#productCode'),
+                    Validator.isRequired('#image'),
+                    Validator.isRequired('#ingredient'),
+                    Validator.isRequired('#intruction'),
+                    Validator.isRequired('#preservation'),
+                    Validator.isRequired('#origin'),
+                ]
+            });
+        </script>
 </body>
 </html>

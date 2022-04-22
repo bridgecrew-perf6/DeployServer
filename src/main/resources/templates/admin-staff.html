@@ -1,247 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-	<link rel="stylesheet" th:href="@{/css/style.css}">
-	<!-- Responsive CSS -->
-	<link rel="shortcut icon" href="images/favicon.icon" type="image/x-icon">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-	<link rel="stylesheet" href="css/responsive.css">
-	<link rel="stylesheet" th:href="@{/css/custom.css}">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-	<link href="/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
-	<script defer src="/fontawesome-free-5.15.3-web/js/all.js"></script>
-	<link href="/fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
-	<link href="/fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
-	<link href="/fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
-	<script defer src="/fontawesome-free-5.15.3-web/js/brands.js"></script>
-	<script defer src="/fontawesome-free-5.15.3-web/js/solid.js"></script>
-	<script defer src="/fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
-<title>Quản lý nhân viên</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="shortcut icon" href="images/favicon.icon" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/all.js"></script>
+    <link href="/fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+    <link href="/fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+    <script defer src="/fontawesome-free-5.15.3-web/js/brands.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/solid.js"></script>
+    <script defer src="/fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <title>Quản lý nhân viên</title>
 </head>
 
 <body>
 <header class="top-navbar">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container">
-			<a class="navbar-brand" href="/home">
-				<img th:src="@{/images/logo1.png}" alt="Logo" class="tm-site-logo" />
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
-					aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="col-3">
-				<form class="search-san-pham" action="#" th:action="@{/admin/product/search}" method="GET">
-					<div class="row">
-						<input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
-						<button type="submit" ><i class="fa fa-search"></i></button>
-					</div>
-				</form>
-			</div>
-			<div class="collapse navbar-collapse" id="navbars-rs-food">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown">
-						<a class="nav-link " href="/admin/staff"
-						>Quản lý nhân viên</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/home">
+                <img th:src="@{/images/logo1.png}" alt="Logo" class="tm-site-logo"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+                    aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-3">
+                <form class="search-san-pham" action="#" th:action="@{/admin/product/search}" method="GET">
+                    <div class="row">
+                        <input type="text" class="form-control" name="productName" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/admin/staff"
+                        >Quản lý nhân viên</a>
 
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
-						   data-toggle="dropdown">Quản lý</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown-a">
-							<a class="dropdown-item" href="/bill">Hóa đơn</a>
-							<a class="dropdown-item" href="/incomeform">Doanh thu</a>
-							<a class="dropdown-item" href="/admin/category">Loại sản phẩm</a>
-							<a class="dropdown-item" href="/admin/product">Sản phẩm</a>
-							<a class="dropdown-item" href="/admin/supplier">Nhà cung cấp</a>
-							<a class="dropdown-item" href="/admin/feedback">Phản hồi</a>
-							<a class="dropdown-item" href="/admin/news">Bài viết</a>
-							<a class="dropdown-item" href="/admin/checkProductExpiry">Kiểm tra thời hạn sản phẩm</a>
-							<a class="dropdown-item" href="/admin/checkProductQuantity">Kiểm tra sản phẩm sắp hết hàng</a>
-						</div>
-					</li>
-					<div class="dropdown ">
-						<button class="btn login_btn" type="button"
-								data-toggle="dropdown">
-							<i class="fas fa-user-tie"></i>Xin chào quản lý<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="/profile"><i class="fas fa-user"></i>
-								Hồ sơ</a></li>
-							<li class="dropdown-divider"></li>
-							<li><a href="/login"><i class="fas fa-sign-out-alt"></i>
-								Đăng xuất</a></li>
-						</ul>
-					</div>
-				</ul>
-			</div>
-		</div>
-	</nav>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
+                           data-toggle="dropdown">Quản lý</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" href="/bill">Hóa đơn</a>
+                            <a class="dropdown-item" href="/incomeform">Doanh thu</a>
+                            <a class="dropdown-item" href="/admin/category">Loại sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/product">Sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/supplier">Nhà cung cấp</a>
+                            <a class="dropdown-item" href="/admin/feedback">Phản hồi</a>
+                            <a class="dropdown-item" href="/admin/news">Bài viết</a>
+                            <a class="dropdown-item" href="/admin/checkProductExpiry">Kiểm tra thời hạn sản phẩm</a>
+                            <a class="dropdown-item" href="/admin/checkProductQuantity">Kiểm tra sản phẩm sắp hết
+                                hàng</a>
+                        </div>
+                    </li>
+                    <div class="dropdown ">
+                        <button class="btn login_btn" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i>Xin chào quản lý<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/profile"><i class="fas fa-user"></i>
+                                Hồ sơ</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="/login"><i class="fas fa-sign-out-alt"></i>
+                                Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
-	<div class="container" style="padding-top: 200px">
-		<div class="main-body">
-			<div class="row gutters-sm">
-				<div class="col-md-12">
-					<div class="card mb-3">
-						<div class="card-body">
-							<form action="" th:action="@{/saveNewStaff}" th:object="${account}" method="POST">
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Tên đăng nhập</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputUsername"
-											placeholder="Hãy nhập tên đăng nhập" th:field="*{username}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputPassword"
-											placeholder="Hãy nhập mật khẩu" th:field="*{password}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Họ và tên</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputFullname"
-											placeholder="Hãy nhập họ và tên" th:field="*{fullname}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Giới tính</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputGender"
-											placeholder="Hãy nhập giới tính" th:field="*{gender}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputAddress"
-											placeholder="Hãy nhập email" th:field="*{email}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Địa chỉ</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputAddress"
-											placeholder="Hãy nhập địa chỉ" th:field="*{address}">
-									</div>
-								</div>
-								<div class="mb-3 row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Số điện thoại</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control" id="inputTel"
-											placeholder="Hãy nhập số điện thoại" th:field="*{phone}">
-									</div>
-								</div>
-										<button type="submit" class="btn btn-outline-success mt-2">Thêm mới nhân viên</button>
-										<a type="submit" href="/admin" class="btn btn-outline-danger mt-2">Quay lại trang quản lý</a>
-							</form>
-						</div>
-					</div>
-				</div>
+<div class="container" style="padding-top: 200px">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form id="add-staff-form" action="#" th:object="${account}"
+                              method="POST">
+                            <div class="mb-3 row">
+                                <label for="name" class="col-sm-2 col-form-label">Tên đăng nhập</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="name"
+                                           placeholder="Hãy nhập tên đăng nhập" th:field="*{username}">
+                                    <div class="error" style="color: red"></div>
+                                    <div style="color: red;" id="namefail"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="password" class="col-sm-2 col-form-label">Mật khẩu</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="password"
+                                           placeholder="Hãy nhập mật khẩu" th:field="*{password}">
+                                    <div class="error" style="color: red;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="fullname" class="col-sm-2 col-form-label">Họ và tên</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="fullname"
+                                           placeholder="Hãy nhập họ và tên" th:field="*{fullname}">
+                                    <div class="error" style="color: red;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputGender" class="col-sm-2 col-form-label">Giới tính</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputGender"
+                                           placeholder="Hãy nhập giới tính" th:field="*{gender}">
+                                    <div class="error" style="color: red;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="email"
+                                           placeholder="Hãy nhập email" th:field="*{email}">
+                                    <div class="error" style="color: red;"></div>
+                                    <div style="color: red; " id="emailfail"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputAddress" class="col-sm-2 col-form-label">Địa chỉ</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputAddress"
+                                           placeholder="Hãy nhập địa chỉ" th:field="*{address}">
+                                    <div class="error" style="color:red;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="phone" class="col-sm-2 col-form-label">Số điện thoại</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="phone"
+                                           placeholder="Hãy nhập số điện thoại" th:field="*{phone}">
+                                    <div class="error" style="color: red;"></div>
+                                    <div style="color: red;" id="phonefail"></div>
+                                </div>
+                            </div>
+                            <button id="btnSubmitStaff" class="btn btn-outline-success mt-2">Thêm mới nhân viên</button>
+                            <a href="/admin" class="btn btn-outline-danger mt-2">Quay lại trang quản lý</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="main-body">
+                    <div class="row gutters-sm">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <h1>Danh sách nhân viên</h1>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3 row">
 
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Tên đăng nhập</th>
+                                                <th scope="col">Họ và tên</th>
+                                                <th scope="col">Giới tính</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Địa chỉ</th>
+                                                <th scope="col">Số điện thoại</th>
+                                                <th scope="col">Chức năng</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="account : ${listStaff}">
+                                                <td th:text="${account.id}"></td>
+                                                <td th:text="${account.username}"></td>
+                                                <td th:text="${account.fullname}"></td>
+                                                <td th:text="${account.gender}"></td>
+                                                <td th:text="${account.email}"></td>
+                                                <td th:text="${account.address}"></td>
+                                                <td th:text="${account.phone}"></td>
+                                                <td style="text-align: center">
+                                                    <a href="#" th:attr="data-id=${account.id}" onclick="onDelete(this)">Xóa</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
 
-				<div class="container">
-					<div class="main-body">
-						<div class="row gutters-sm">
-							<div class="col-md-12">
-								<div class="card mb-3">
-									<div class="card-header">
-										<div class="d-flex flex-column align-items-center text-center">
-											<h1>Danh sách nhân viên</h1>
-										</div>
-									</div>
-									<div class="card-body">
-										<div class="mb-3 row">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal hide" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-th-keytype="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Bạn có muốn xóa nhân viên này không?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Xác nhận thao tác -->
 
-											<table class="table">
-												<thead>
-													<tr>
-														<th scope="col">ID</th>
-														<th scope="col">Tên đăng nhập</th>
-														<th scope="col">Họ và tên</th>
-														<th scope="col">Giới tính</th>
-														<th scope="col">Email</th>
-														<th scope="col">Địa chỉ</th>
-														<th scope="col">Số điện thoại</th>
-														<th scope="col">Chức năng</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr th:each="account : ${listStaff}">
-														<td th:text="${account.id}">Action</th>
-														<td th:text="${account.username}"></td>
-														<td th:text="${account.fullname}"></td>
-														<td th:text="${account.gender}"></td>
-														<td th:text="${account.email}"></td>
-														<td th:text="${account.address}"></td>
-														<td th:text="${account.phone}"></td>
-														<td style="text-align: center"> <a href="#" th:attr="data-id=${account.id}" onclick="onDelete(this)">Xóa</a></td>
-													</tr>
-												</tbody>
-											</table>
+                <div class="container bootstrap snippets bootdeys">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6 margintop">
+                                        <a class=" yes btn btn-success" style="margin-left: 40px;"><i
+                                                class="fa fa-check" style="margin-left: 0px;"></i>Xác nhận</a>
+                                        <button class="btn btn-danger" style="margin-left: 80px;" data-dismiss="modal"
+                                                aria-label="Close"><i class="fa fa-envelope-o"></i> Không
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal hide" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-th-keytype="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Bạn có muốn xóa nhân viên này không?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- Xác nhận thao tác -->
+<script>
 
-					<div class="container bootstrap snippets bootdeys">
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="panel-body">
-									<div class="row">
-										<div class="col-xs-6 margintop">
-											<a class=" yes btn btn-success" style="margin-left: 40px;"><i class="fa fa-check" style="margin-left: 0px;"></i>Xác nhận</a>
-											<button class="btn btn-danger" style="margin-left: 80px;" data-dismiss="modal" aria-label="Close"><i class="fa fa-envelope-o" ></i> Không</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-	<script>
+    function onDelete(element) {
+        var id = $(element).attr('data-id');
+        console.log(element)
+        console.log(id);
+        $("#itemId").val(id);
+        $("#exampleModalCenter").modal('show');
+        $(".yes").prop("href", '/admin/deleteStaff/' + id)
+    }
+</script>
 
-		function onDelete(element){
-			var id = $(element).attr('data-id');
-			console.log(element)
-			console.log(id);
-			$("#itemId").val(id);
-			$("#exampleModalCenter").modal('show');
-			$(".yes").prop("href", '/admin/deleteStaff/'+id)
-		}
-	</script>
+<script th:src="@{/js/form_validate.js}"></script>
+<script th:src="@{/js/add_staff_form.js}"></script>
+<script>
+	Validator({
+		form: '#add-staff-form',
+		errorSelector: '.error',
+		rules: [
+			Validator.isRequired('#name'),
+			Validator.isRequired('#email'),
+			Validator.isEmail('#email'),
+			Validator.isRequired('#password'),
+			Validator.minLength('#password', 8),
+			Validator.isRequired('#fullname'),
+			Validator.isRequired('#phone'),
+			Validator.isPhone('#phone'),
+		]
+	});
+</script>
 </body>
 
 </html>

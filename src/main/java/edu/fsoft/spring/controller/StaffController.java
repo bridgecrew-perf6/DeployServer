@@ -5,14 +5,12 @@ import java.util.List;
 import edu.fsoft.spring.SecurityUtils;
 import edu.fsoft.spring.interfaceService.IProductService;
 import edu.fsoft.spring.model.Product;
+import edu.fsoft.spring.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import edu.fsoft.spring.interfaceService.IAccountService;
 import edu.fsoft.spring.model.Account;
@@ -43,14 +41,29 @@ public class StaffController {
 	}
 	
 	@RequestMapping(value = "/saveNewStaff", method = RequestMethod.POST)
-	public String saveStaff(@ModelAttribute("account") Account account) {
-		if(iaccountService.findByUsername(account.getUsername()) == null) {
+	@ResponseBody
+	public ResponseModel saveStaff(@ModelAttribute("account") Account account) {
+		if(aservice.findByUsername(account.getUsername()) != null) {
+//			String usernameErr = "";
+//			model.addAttribute("Tên đăng nhập đã được sủ dụng!", usernameErr);
+//			mode
+			return new ResponseModel(false,"Tên đăng nhập đã được sủ dụng!");
+		} else if(aservice.findByEmail(account.getEmail()) != null) {
+//			String emailErr = "";
+//			model.addAttribute("Email đã được sủ dụng!", emailErr);
+			System.out.println(account.getEmail());
+			return new ResponseModel(false,"Email đã được sủ dụng!");
+		} else if(aservice.findByPhone(account.getPhone()) != null) {
+//			String phoneErr = "";
+//			model.addAttribute("Số điện thoại đã được sủ dụng!", phoneErr);
+			return new ResponseModel(false,"Số điện thoại đã được sủ dụng!");
+		} else {
 			account.setRole("STAFF");
 			account.setPassword(passwordEncoder.encode(account.getPassword()));
 			account.setPoint(0);
-			iaccountService.save(account);	
+			aservice.save(account);
+			return new ResponseModel(true,"Đăng ký tài khoản thành công");
 		}
-		return "redirect:/admin/staff";
 	}
 	
 	@RequestMapping("admin/deleteStaff/{id}")
