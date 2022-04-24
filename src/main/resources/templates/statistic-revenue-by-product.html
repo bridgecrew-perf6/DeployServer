@@ -104,10 +104,10 @@
         <div class="col-9">
             <div  class="col-md-6">
                 <label style="margin-top: 15px" class="form-label">Tháng: </label>
-                <select class="form-select" aria-label="Default select example" id="month">
+                <select class="form-select" aria-label="Default select example" id="month" >
                     <option >1</option>
                     <option >2</option>
-                    <option >3</option>
+                    <option selected="selected" >3</option>
                     <option >4</option>
                     <option >5</option>
                     <option >6</option>
@@ -120,7 +120,7 @@
                 </select>
                 <label style="margin-top: 15px" class="form-label">Năm: </label>
                 <select class="form-select" aria-label="Default select example" id="year">
-                    <option >2022</option>
+                    <option selected="selected">2022</option>
                     <option >2021</option>
                     <option >2020</option>
                     <option >2019</option>
@@ -169,7 +169,6 @@
         </div>
     </div>
 </div>
-
 <script>
     let label = [], color = [];
     var length = document.getElementsByClassName('th').length;
@@ -196,7 +195,7 @@
         const data = {
             labels: label,
             datasets: [{
-                label: 'Thống kê doanh thu cửa hàng theo sản phẩm',
+                label: 'Thống kê doanh thu cửa hàng theo sản phẩm tháng 3 năm 2022',
                 data: colorInfo,
                 fill: false,
                 backgroundColor: rgbb,

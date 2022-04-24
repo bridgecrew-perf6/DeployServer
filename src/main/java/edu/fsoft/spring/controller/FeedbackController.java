@@ -22,7 +22,7 @@ public class FeedbackController {
 	@RequestMapping(value = "/saveFeedback", method = RequestMethod.POST)
 	public String saveNewss(@ModelAttribute("feedback") Feedback feedback) {
 		service.save(feedback);
-		return "redirect:/";
+		return "redirect:/contact";
 	}
 	@RequestMapping("/admin/feedback")
 	public String viewHomePage(Model model) {

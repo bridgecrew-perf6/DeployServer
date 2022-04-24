@@ -100,7 +100,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Giá</label>
-                <input  type="text" th:field="*{price}" class="form-control">
+                <input  type="text" id="productPrice" th:field="*{price}" class="form-control">
                 <div class="error" style="color: red; "></div>
             </div>
             <div class="col-md-6">
@@ -167,7 +167,7 @@
             </div>
             <div class="col-md-12">
                 <label class="form-label">Mô tả sản phẩm</label>
-                <input type="text" th:field="*{description}" class="form-control">
+                <textarea type="text" th:field="*{description}" class="form-control" placeholder="Mô tả sản phẩm"></textarea>
             </div>
             <div class="col-12 mb-3">
                 <button type="submit" class="btn btn-outline-success">Lưu chỉnh sửa</button>

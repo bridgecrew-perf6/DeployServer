@@ -101,7 +101,7 @@ Validator.isActivePrice = function (selector) {
     return {
         selector: selector,
         test: function (value) {
-            var priceRegex = /(^[0-9]+$)/
+            var priceRegex = /(^[0-9.]+$)/
             return value.trim().match(priceRegex) ? undefined : 'Giá sản phẩm không hợp lệ!'
         }
     }

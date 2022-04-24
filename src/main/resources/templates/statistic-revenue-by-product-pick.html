@@ -24,11 +24,10 @@
     <script defer src="/fontawesome-free-5.15.3-web/js/brands.js"></script>
     <script defer src="/fontawesome-free-5.15.3-web/js/solid.js"></script>
     <script defer src="/fontawesome-free-5.15.3-web/js/fontawesome.js"></script>
-    <title>Xem doanh thu theo tháng</title>
+    <title>Xem doanh thu theo sản phẩm</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/chart.js"></script>
 </head>
-
 <body>
 <header class="top-navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,8 +88,6 @@
     </nav>
 </header>
 
-
-
 <div class="container" style="padding-top: 200px">
     <div class="row">
         <div class="col-3">
@@ -106,46 +103,62 @@
         </div>
         <div class="col-9">
             <div  class="col-md-6">
-                    <label style="margin-top: 15px" class="form-label">Năm: </label>
-                    <select class="form-select" aria-label="Default select example" id="year">
-                        <option selected="selected">2022</option>
-                        <option >2021</option>
-                        <option >2020</option>
-                        <option >2019</option>
-                        <option >2018</option>
-                    </select>
-                    <a type="button" class="yes btn btn-outline-success" onclick="onCheck()">Kiểm tra</a>
+                <label style="margin-top: 15px" class="form-label">Tháng: </label>
+                <select class="form-select" aria-label="Default select example" id="month" >
+                    <option >1</option>
+                    <option >2</option>
+                    <option >3</option>
+                    <option >4</option>
+                    <option >5</option>
+                    <option >6</option>
+                    <option >7</option>
+                    <option >8</option>
+                    <option >9</option>
+                    <option >10</option>
+                    <option >11</option>
+                    <option >12</option>
+                </select>
+                <label style="margin-top: 15px" class="form-label">Năm: </label>
+                <select class="form-select" aria-label="Default select example" id="year">
+                    <option >2022</option>
+                    <option >2021</option>
+                    <option >2020</option>
+                    <option >2019</option>
+                    <option >2018</option>
+                </select>
+                <a type="button" class="yes btn btn-outline-success" onclick="onCheck()">Kiểm tra</a>
             </div>
             <div>
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="container-fluid" style="padding-top: 50px">
-                <div class="main-body">
-                    <div class="row gutters-sm">
-                        <div class="col-md-12">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <h1>Số liệu doanh thu</h1>
+            <div class="container-fluid" style="margin-top: 4rem;">
+                <div class="container-fluid" style="padding-top: 50px">
+                    <div class="main-body">
+                        <div class="row gutters-sm">
+                            <div class="col-md-12">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <h1>Số liệu doanh thu</h1>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mb-3 row">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Loại sản phẩm</th>
-                        <th scope="col">Doanh thu</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="th" th:each="bill:${list}">
-                        <th id="col1" scope="col" th:text="${bill.text}"></th>
-                        <th id="col2" scope="col" th:text="${bill.count}"></th>
-                    </tr>
-
-                    </tbody>
-                </table>
+                                    <div class="card-body">
+                                        <div class="mb-3 row">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Loại sản phẩm</th>
+                                                    <th scope="col">Doanh thu</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="th" th:each="bill:${list}">
+                                                    <th id="col1" scope="col" th:text="${bill.text}"></th>
+                                                    <th id="col2" scope="col" th:text="${bill.count}"></th>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,8 +167,8 @@
                 </div>
             </div>
         </div>
-        </div>
- </div>
+    </div>
+</div>
 <script th:src="@{/js/localTime.js}"></script>
 <script>
     let label = [], color = [];
@@ -173,24 +186,35 @@
 
     function  createChart(id, label = [], colorInfo = []){
         let rgb = [];
+        let rgbb = [];
         for(let i = 0; i < colorInfo.length; i++){
             rgb.push(generateColor())
+            rgbb.push(generateColorBorder())
             console.log(generateColor())
         }
-
+        let year = document.getElementById("year").value;
+        let month = document.getElementById("month").value;
         const data = {
             labels: label,
             datasets: [{
-                label: 'Thống kê doanh thu cửa hàng theo tháng năm 2022',
+                label: 'Thống kê doanh thu cửa hàng theo sản phẩm '+month+' năm '+year,
                 data: colorInfo,
                 fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                backgroundColor: rgbb,
+                borderColor: rgb,
+                borderWidth: 1
             }]
         };
         const config = {
-            type: 'line',
+            type: 'bar',
             data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
         };
 
         let  ctx = document.getElementById(id).getContext("2d");
@@ -207,9 +231,12 @@
     }
     function onCheck() {
         let year = document.getElementById("year").value;
+        let month = document.getElementById("month").value;
         var y = localStorage.getItem("year");
         localStorage.setItem("year", year);
-        $(".yes").prop("href", "/admin/statistic/revenueByMonth/"+year)
+        var x = localStorage.getItem("month");
+        localStorage.setItem("month", month);
+        $(".yes").prop("href", "/admin/statistic/revenueByProduct/"+month+"/"+year)
     }
 </script>
 </body>

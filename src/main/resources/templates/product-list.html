@@ -99,23 +99,28 @@
                 </div>
                 <div class="col-12">
                     <label class="form-label">Tên sản phẩm</label>
-                    <input type="text" th:field="*{productName}" class="form-control" placeholder="Hãy nhập tên sản phẩm">
+                    <input id="productName" type="text" th:field="*{productName}" class="form-control" >
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Giá</label>
-                    <input type="text" th:field="*{price}" class="form-control" placeholder="Ex: 15000">
+                    <input  type="text" id="productPrice" th:field="*{price}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Số lượng</label>
-                    <input type="text" th:field="*{quantity}" class="form-control" placeholder="EX: 1,2,3,...">
+                    <input id="quantity" type="text" th:field="*{quantity}" class="form-control" >
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Mã vạch</label>
-                    <input type="text" th:field="*{productCode}" class="form-control" placeholder="Hãy điền mô tả sản phẩm">
+                    <input id="productCode" type="text" th:field="*{productCode}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Ảnh sản phẩm</label>
-                    <input type="text" th:field="*{image}" class="form-control" placeholder="Link ảnh sản phẩm">
+                    <input id="image" type="text" th:field="*{image}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Loại sản phẩm</label>
@@ -123,8 +128,8 @@
                         <div th:each="category:${listCategory}">
                             <option th:value="${category.id}" th:text="${category.type}"></option>
                         </div>
-<!--                        <option value="1">Drinks</option>-->
-<!--                        <option value="2">Foods</option>-->
+                        <!--                        <option value="1">Drinks</option>-->
+                        <!--                        <option value="2">Foods</option>-->
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -137,19 +142,23 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Thành phần</label>
-                    <input type="text" th:field="*{ingredient}" class="form-control" placeholder="Hãy nhập thành phần sản phẩm">
+                    <input id="ingredient" type="text" th:field="*{ingredient}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Hướng dẫn sử dụng</label>
-                    <input type="text" th:field="*{intruction}" class="form-control" placeholder="Hãy nhập hướng dẫn sử dụng">
+                    <input id="intruction" type="text" th:field="*{intruction}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Cách bảo quản</label>
-                    <input type="text" th:field="*{preservation}" class="form-control" placeholder="Hãy nhập cách bảo quản">
+                    <input id="preservation" type="text" th:field="*{preservation}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Xuất xứ</label>
-                    <input type="text" th:field="*{origin}" class="form-control" placeholder="Hãy nhập nơi xuất xứ">
+                    <input id="origin" type="text" th:field="*{origin}" class="form-control">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Ngày sản xuất</label>
@@ -266,6 +275,26 @@
             $(".yes").prop("href", "/deleteProduct/"+id)
         }
     </script>
+<script th:src="@{/js/form_validate.js}"></script>
+<script>
+    Validator({
+        form: '#edit-product-form',
+        errorSelector: '.error',
+        rules: [
+            Validator.isRequired('#productName'),
+            Validator.isRequired('#productPrice'),
+            Validator.isActivePrice('#productPrice'),
+            Validator.isRequired('#quantity'),
+            Validator.isActiveInt('#quantity'),
+            Validator.isRequired('#productCode'),
+            Validator.isRequired('#image'),
+            Validator.isRequired('#ingredient'),
+            Validator.isRequired('#intruction'),
+            Validator.isRequired('#preservation'),
+            Validator.isRequired('#origin'),
+        ]
+    });
+</script>
 </body>
 
 </html>

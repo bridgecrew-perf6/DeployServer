@@ -255,7 +255,7 @@
                   <h6 class="mb-0">Tên đăng nhập</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input class="form-control" disabled th:field="*{username}"/>
+                  <input class="form-control" readonly th:field="*{username}" style="background-color: #E9ECEF"/>
                 </div>
               </div>
               <hr>                 
@@ -273,7 +273,7 @@
                   <h6 class="mb-0">E-mail</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                 <input class="form-control" disabled th:field="*{email}" />
+                 <input class="form-control" readonly th:field="*{email}" style="background-color: #E9ECEF" />
                   <div class="error" style="color: red; background: #10141a"></div>
                 </div>
               </div>
@@ -284,7 +284,7 @@
                 </div>
                 <div class="col-sm-9 text-secondary">
                      <input class="form-control" th:field="*{gender}" />
-                  <div class="error" style="color: red; background: #10141a"></div>v
+                  <div class="error" style="color: red; background: #10141a"></div>
                 </div>
               </div>
               <hr>
@@ -304,7 +304,7 @@
                   <h6 class="mb-0">Số điện thoại</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                    <input class="form-control" disabled th:field="*{phone}" />
+                    <input class="form-control" readonly th:field="*{phone}"  style="background-color: #E9ECEF"/>
                 </div>
 
               </div>
@@ -314,7 +314,7 @@
                     <h6 class="mb-0">Điểm</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input disabled class="form-control" th:field="*{point}" />
+                    <input readonly class="form-control" th:field="*{point}" style="background-color: #E9ECEF" />
                   </div>
                 </div>
                 <hr>

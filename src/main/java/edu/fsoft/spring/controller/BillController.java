@@ -192,13 +192,13 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[7].toString());
-			arr[i].setCount(Float.parseFloat(a[8].toString()));
+			arr[i].setText(a[8].toString());
+			arr[i].setCount(Float.parseFloat(a[9].toString()));
 			list.add(arr[i]);
 			i++;
 		}
 		model.addAttribute("list", list);
-		return "statistic-revenue-by-product";
+		return "statistic-revenue-by-product-pick";
 	}
 
 	@RequestMapping("/admin/statistic/revenueByCategory")
@@ -237,7 +237,7 @@ public class BillController {
 			i++;
 		}
 		model.addAttribute("list", list);
-		return "statistic-revenue-by-category";
+		return "statistic-revenue-by-category-pick";
 	}
 	@RequestMapping("/admin/statistic/revenueByStaff")
 	public String viewStatisticRevenueByStaff(Model model) {
@@ -270,13 +270,13 @@ public class BillController {
 		int i = 0;
 		for (Object[] a : listProducts) {
 			arr[i] = new ProductByCount();
-			arr[i].setText(a[6].toString());
-			arr[i].setCount(Float.parseFloat(a[7].toString()));
+			arr[i].setText(a[7].toString());
+			arr[i].setCount(Float.parseFloat(a[8].toString()));
 			list.add(arr[i]);
 			i++;
 		}
 		model.addAttribute("list", list);
-		return "statistic-revenue-by-month";
+		return "statistic-revenue-by-month-pick";
 	}
 	@RequestMapping("/admin/statistic/revenueByStaff/{month}/{year}")
 	public String viewStatisticRevenueByStaffPickDate(@PathVariable(name = "month") int month, @PathVariable(name = "year") int year,Model model) {
@@ -295,10 +295,10 @@ public class BillController {
 			i++;
 		}
 		model.addAttribute("list", list);
-		return "statistic-revenue-by-staff";
+		return "statistic-revenue-by-staff-pick";
 	}
-	@GetMapping("/historyOrder/{name}")
-	public ModelAndView historyOrder(@PathVariable(name = "name") String name,Model model) {
+	@GetMapping("/historyOrder")
+	public ModelAndView historyOrder(Model model) {
 		ModelAndView mav = new ModelAndView("historyOrder");
 		SecurityUtils securityUtils = new SecurityUtils();
 		String username = securityUtils.getPrincipal();

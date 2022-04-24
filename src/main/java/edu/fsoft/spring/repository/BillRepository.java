@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BillRepository extends JpaRepository<Bill, Integer> {
 
-    @Query(value = " SELECT * FROM bill where created_by = :name order by id desc and is_cancel = false;", nativeQuery = true)
+    @Query(value = " SELECT * FROM bill where created_by = :name and is_cancel = false order by id desc", nativeQuery = true)
     List<Bill> listBillByStaff(@Param("name") String name);
 	@Query(value = "select MAX(id) from bill", nativeQuery = true)
     int findBillByIdDesc();

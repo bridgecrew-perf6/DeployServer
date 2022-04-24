@@ -107,7 +107,7 @@
                 <select class="form-select" aria-label="Default select example" id="month">
                     <option >1</option>
                     <option >2</option>
-                    <option >3</option>
+                    <option selected="selected" >3</option>
                     <option >4</option>
                     <option >5</option>
                     <option >6</option>
@@ -120,7 +120,7 @@
                 </select>
                 <label style="margin-top: 15px" class="form-label">Năm: </label>
                 <select class="form-select" aria-label="Default select example" id="year">
-                    <option >2022</option>
+                    <option selected="selected">2022</option>
                     <option >2021</option>
                     <option >2020</option>
                     <option >2019</option>
@@ -132,6 +132,19 @@
                 <canvas id="myChart"></canvas>
             </div>
             <div class="container-fluid" style="margin-top: 4rem;">
+                <div class="container-fluid" style="padding-top: 50px">
+                    <div class="main-body">
+                        <div class="row gutters-sm">
+                            <div class="col-md-12">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <h1>Số liệu doanh thu</h1>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3 row">
+            <div class="container-fluid">
                 <table class="table">
                     <thead>
                     <tr>
@@ -150,11 +163,15 @@
             </div>
         </div>
     </div>
-
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-</div>
-
 <script>
     let label = [], color = [];
     var length = document.getElementsByClassName('th').length;
@@ -183,7 +200,7 @@
 
             labels: label,
             datasets: [{
-                label: 'Thống kê doanh thu cửa hàng theo loại sản phẩm',
+                label: 'Thống kê doanh thu cửa hàng theo nhân viên tháng 3 năm 2022',
                 data: colorInfo,
                 fill: false,
                 backgroundColor: rgbb,

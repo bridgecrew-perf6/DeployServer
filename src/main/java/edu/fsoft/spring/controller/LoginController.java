@@ -3,6 +3,7 @@ package edu.fsoft.spring.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.fsoft.spring.model.Product;
 import edu.fsoft.spring.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -61,7 +62,12 @@ public class LoginController {
 			return new ResponseModel(true,"Đăng ký tài khoản thành công");
 		}
 	}
-
+	@RequestMapping("/updateProfile")
+	public String updateProfile(@ModelAttribute("account") Account account, Model model) {
+		model.addAttribute("account", account);
+		accountService.save(account);
+		return "redirect:/profile";
+	}
 //	@RequestMapping("/profile/{id}")
 //	public ModelAndView showEditNewsForm(@PathVariable(name = "id") Long id) {
 //		ModelAndView mav = new ModelAndView("profile");

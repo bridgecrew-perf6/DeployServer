@@ -43,6 +43,12 @@ public class OrderController {
 			return true;
 		return false;
 	}
+
+	public boolean checkProductQuantity(int id) {
+		if(productService.get(id).getQuantity() <= 0)
+			return true;
+		return false;
+	}
 	// Add order
 //	@RequestMapping("/newOrder")
 //	public String showOrder(Model model) {
@@ -80,10 +86,17 @@ public class OrderController {
 	@GetMapping("/addToCart/{id}")
 	@ResponseBody
 	public String addToCart(@PathVariable int id){
-		if(!checkProduct(id)) {
-			GlobalData.cart.add(productService.get(id));
+		if(checkProduct(id)) {
+
+			return "existed";
 		}
-		return "success";
+		else if(!checkProductQuantity(id)) {
+			return "zero";
+		}
+		else {
+			GlobalData.cart.add(productService.get(id));
+			return "success";
+		}
 	}
 
 	@GetMapping("/cart")
@@ -133,12 +146,12 @@ return mav;
 				productRepository.save(product);
 			}
 			total = total - discount;
-			int plusPoint = (int) total / 100000;
+			int plusPoint = (int) total / 50000;
 			if (account != null) {
 				bill.setCustomerPhone(account.getPhone());
 				account.setPoint(account.getPoint() + plusPoint);
 				account.setPoint(account.getPoint() - dto.getPoint());
-			}
+			} else bill.setCustomerPhone(null);
 			bill.setDiscount(discount);
 			bill.setTotal(total);
 			billService.save(bill);
