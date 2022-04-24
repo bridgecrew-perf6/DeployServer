@@ -1,4 +1,5 @@
 function adminAddAccount() {
+    console.log('cc')
     if (!(document.getElementById("name").parentElement.classList.contains('invalid') ||
         document.getElementById("password").parentElement.classList.contains('invalid') ||
         document.getElementById("email").parentElement.classList.contains('invalid') ||

@@ -49,8 +49,8 @@ public class BillController {
 		model.addAttribute("listBills", listBills);
 		return "bill";
 		}
-	@GetMapping("/billStaff/{name}")
-	public ModelAndView viewBillByStaff(@PathVariable(name = "name") String name,Model model) {
+	@GetMapping("/billStaff")
+	public ModelAndView viewBillByStaff(Model model) {
 		ModelAndView mav = new ModelAndView("billStaff");
 		SecurityUtils securityUtils = new SecurityUtils();
 		String username = securityUtils.getPrincipal();
@@ -58,7 +58,7 @@ public class BillController {
 		mav.addObject("account", account2);
 		Bill bill = new Bill();
 		model.addAttribute("bill", bill);
-		List<Bill> listBills = service.ListBillByStaff(name);
+		List<Bill> listBills = service.ListBillByStaff(account2.getUsername());
 		model.addAttribute("listBills", listBills);
 		return mav;
 	}
