@@ -108,9 +108,9 @@
                         <!-- Card -->
                         <div class="card wish-list mb-4">
                             <div class="card-body">
-                                <h5 class="mb-4">Giỏ hàng (<span th:text="${cartCount}">2</span> sản phẩm)</h5>
+                                <h5 class="mb-4">Giỏ hàng (<span id="cartCount" th:text="${cartCount}">2</span> sản phẩm)</h5>
 
-                                <div class="row mb-4" th:each="item, iStat : ${cart}">
+                                <div class="row mb-4 eachitem" th:each="item, iStat : ${cart}">
                                     <input type="hidden" th:value="${item.quantity}" th:id="'instock' + ${item.id}">
                                     <div class="col-md-5 col-lg-3 col-xl-3">
                                         <div class="mb-3 mb-md-0">

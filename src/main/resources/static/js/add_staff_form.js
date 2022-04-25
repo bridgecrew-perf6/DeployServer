@@ -24,6 +24,7 @@ function adminAddAccount() {
                 console.log(res['message']);
                 if (res['success'] === true) {
                     window.location.replace('/admin/staff');
+                    console.log('sucess');
                 } else if (res['message'] === "Tên đăng nhập đã được sủ dụng!") {
                     $('#namefail').text("Tên đăng nhập đã được sủ dụng!");
                 } else if (res['message'] === "Email đã được sủ dụng!") {

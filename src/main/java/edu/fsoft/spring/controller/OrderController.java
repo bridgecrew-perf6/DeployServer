@@ -39,8 +39,6 @@ public class OrderController {
 			if(GlobalData.cart.get(i).getId() == id)
 				return true;
 		}
-		if(productService.get(id).getQuantity() == 0)
-			return true;
 		return false;
 	}
 
@@ -90,7 +88,7 @@ public class OrderController {
 
 			return "existed";
 		}
-		else if(!checkProductQuantity(id)) {
+		else if(checkProductQuantity(id)) {
 			return "zero";
 		}
 		else {

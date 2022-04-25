@@ -93,7 +93,7 @@
             <div class="card-header text-center">
                 <h1>Thêm mới sản phẩm</h1>
             </div>
-            <form class="row g-3 ml-2" action="#" th:action="@{/save}" th:object="${product}" method="post">
+            <form id="add-product-form" class="row g-3 ml-2" action="#" th:action="@{/save}" th:object="${product}" method="post">
                 <div class="col-12">
                     <input type="hidden" th:field="*{id}" class="form-control" placeholder="Ex: Tra Sua">
                 </div>
@@ -162,11 +162,13 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Ngày sản xuất</label>
-                    <input type="date" th:field="*{manufactureDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                    <input id="manufactureDate" type="date" th:field="*{manufactureDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Ngày hết hạn</label>
-                    <input type="date" th:field="*{expirationDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                    <input id="expirationDate" type="date" th:field="*{expirationDate}" class="form-control" placeholder="Ex: 16-04-2022">
+                    <div class="error" style="color: red; "></div>
                 </div>
                 <div class="col-md-12">
                     <label class="form-label">Mô tả sản phẩm</label>
@@ -278,7 +280,7 @@
 <script th:src="@{/js/form_validate.js}"></script>
 <script>
     Validator({
-        form: '#edit-product-form',
+        form: '#add-product-form',
         errorSelector: '.error',
         rules: [
             Validator.isRequired('#productName'),
@@ -292,6 +294,8 @@
             Validator.isRequired('#intruction'),
             Validator.isRequired('#preservation'),
             Validator.isRequired('#origin'),
+            Validator.isRequired('#manufactureDate'),
+            Validator.isRequired('#expirationDate'),
         ]
     });
 </script>
